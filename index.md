@@ -2,6 +2,10 @@
 
 ## Topic Model
 
+Topic modeling is a method for unsupervised classification of documents, similar to clustering on numeric data, which finds some natural groups of items (topics).
+
+**Output of Topic Model**
+
 ```
 Topic 1: 0.057*"female" + 0.034*"pill" + 0.029*"male" + 0.023*"effect" + 0.021*"birth_control" + 0.011*"think" + 0.009*"want" + 0.009*"taking" + 0.008*"control" + 0.007*"like"
 
@@ -19,6 +23,10 @@ Topic 7: 0.023*"control" + 0.018*"sperm" + 0.017*"study" + 0.015*"removed" + 0.0
 
 Topic 8: 0.048*"vasectomy" + 0.014*"procedure" + 0.012*"reversible" + 0.009*"vasalgel" + 0.008*"year" + 0.008*"think" + 0.007*"absolutely" + 0.007*"yeah" + 0.007*"surgery" + 0.007*"kid"
 ```
+
+
+
+**Topic Model Visualization**
 
 <link rel="stylesheet" type="text/css" href="assets/ldavis.css">
 
