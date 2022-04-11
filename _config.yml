@@ -1,1 +1,6 @@
+description: Characterizing Online Attitudes, Expectations, and Concerns about Novel Medical Treatments
+# show_downloads: true
 theme: jekyll-theme-cayman
+github:
+  is_project_page: true
+

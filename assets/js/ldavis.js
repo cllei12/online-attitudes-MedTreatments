@@ -45,15 +45,15 @@ var LDAvis = function(to_select, data_or_file_name, color1, color2) {
     var margin = {
             top: 30,
             right: 30,
-            bottom: 70,
+            bottom: 10,
             left: 30
         },
 
-        mdswidth = 400, // left part width
-        mdsheight = 400,
-        barwidth = 500,
-        barheight = 400,
-        termwidth = 120, // width to add between two panels to display terms
+        mdswidth = 380, // left part width
+        mdsheight = 380,
+        barwidth = 450,
+        barheight = 380,
+        termwidth = 110, // width to add between two panels to display terms
         mdsarea = mdsheight * mdswidth;
     // controls how big the maximum circle can be
     // doesn't depend on data, only on mds width and height:
@@ -631,11 +631,11 @@ var LDAvis = function(to_select, data_or_file_name, color1, color2) {
             var lambdaDivWidth = barwidth;
             var lambdaDiv = document.createElement("div");
             lambdaDiv.setAttribute("id", lambdaInputID);
-            lambdaDiv.setAttribute("style", "padding: 5px; background-color: #e8e8e8; display: inline-block; height: 50px; width: " + lambdaDivWidth + "px; float: right; margin-right: 150px");
+            lambdaDiv.setAttribute("style", "padding: 5px; background-color: #e8e8e8; display: inline-block; height: 50px; width: " + lambdaDivWidth + "px; float: right; margin-right: 220px");
             inputDiv.appendChild(lambdaDiv);
 
             var lambdaZero = document.createElement("div");
-            lambdaZero.setAttribute("style", "padding: 5px; height: 20px; width: 220px; font-family: sans-serif; float: left");
+            lambdaZero.setAttribute("style", "padding: 5px; height: 20px; width: 160px; font-family: sans-serif; float: left");
             lambdaZero.setAttribute("id", lambdaZeroID);
             lambdaDiv.appendChild(lambdaZero);
             var xx = d3.select("#" + lambdaZeroID)
@@ -643,7 +643,7 @@ var LDAvis = function(to_select, data_or_file_name, color1, color2) {
                 .attr("x", 0)
                 .attr("y", 0)
                 .style("font-size", "14px")
-                .text("Slide to adjust relevance metric:");
+                .text("Adjust relevance metric:");
             var yy = d3.select("#" + lambdaZeroID)
                 .append("text")
                 .attr("x", 125)
@@ -671,7 +671,7 @@ var LDAvis = function(to_select, data_or_file_name, color1, color2) {
             var lambdaLabel = document.createElement("label");
             lambdaLabel.setAttribute("id", lambdaLabelID);
             lambdaLabel.setAttribute("for", lambdaID);
-            lambdaLabel.setAttribute("style", "height: 20px; width: 60px; font-family: sans-serif; font-size: 14px; margin-left: 80px");
+            lambdaLabel.setAttribute("style", "height: 20px; width: 20px; font-family: sans-serif; font-size: 14px; margin-left: 60px");
             lambdaLabel.innerHTML = "&#955 = <span id='" + lambdaID + "-value'>" + vis_state.lambda + "</span>";
             lambdaDiv.appendChild(lambdaLabel);
 
