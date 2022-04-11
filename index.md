@@ -1,5 +1,13 @@
 # Characterizing Online Attitudes
 
+Information to include:
+- [ ] Project motivation
+- [ ] Specific problem it’s addressing
+- [ ] Data and methods
+- [ ] Results and some fancy visualizations
+- [ ] What you’ve learned
+- [ ] About (mentor and student information)
+
 ## Topic Model
 
 Topic modeling is a method for unsupervised classification of documents, similar to clustering on numeric data, which finds some natural groups of items (topics).
