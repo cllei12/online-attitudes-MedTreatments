@@ -1,14 +1,14 @@
-# Characterizing Online Attitudes
+<!-- # Characterizing Online Attitudes -->
 
-Information to include:
-- [ ] Project motivation
-- [ ] Specific problem it’s addressing
-- [ ] Data and methods
-- [ ] Results and some fancy visualizations
-- [ ] What you’ve learned
-- [ ] About (mentor and student information)
+## Motivation
 
-## Topic Model
+## Problem to solve
+
+## Data and methods
+
+## Results
+
+### Topic Model
 
 Topic modeling is a method for unsupervised classification of documents, similar to clustering on numeric data, which finds some natural groups of items (topics).
 
@@ -41,3 +41,5 @@ Topic 8: 0.048*"vasectomy" + 0.014*"procedure" + 0.012*"reversible" + 0.009*"vas
 	width="100%" height="700px" scrolling="yes" frameborder="0"
 	src="lda_8.html">
 </iframe>
+
+## Conclusion
