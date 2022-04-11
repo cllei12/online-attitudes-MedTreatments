@@ -1,4 +1,8 @@
-<!-- # Characterizing Online Attitudes -->
+---
+layout: default
+title: Characterizing Online Attitudes, Expectations, and Concerns about Novel Medical Treatments
+description: Characterizing Online Attitudes, Expectations, and Concerns about Novel Medical Treatments
+---
 
 ## Motivation
 
@@ -31,8 +35,6 @@ Topic 7: 0.023*"control" + 0.018*"sperm" + 0.017*"study" + 0.015*"removed" + 0.0
 
 Topic 8: 0.048*"vasectomy" + 0.014*"procedure" + 0.012*"reversible" + 0.009*"vasalgel" + 0.008*"year" + 0.008*"think" + 0.007*"absolutely" + 0.007*"yeah" + 0.007*"surgery" + 0.007*"kid"
 ```
-
-
 
 **Topic Model Visualization**
 
