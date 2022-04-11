@@ -32,8 +32,4 @@ Topic 8: 0.048*"vasectomy" + 0.014*"procedure" + 0.012*"reversible" + 0.009*"vas
 	title="Topic Model Visualization" 
 	width="100%" height="700px" scrolling="yes" frameborder="0"
 	src="lda_8.html">
-<<<<<<< HEAD
 </iframe>
-=======
-</iframe>
->>>>>>> f5f2b707396ade8a04a7285f02a088573c97d913
