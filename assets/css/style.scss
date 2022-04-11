@@ -1,5 +1,4 @@
-@import "{{ site.theme }}";
-
+// customize theme
 // adjust the main content size
 .main-content {
     word-wrap: break-word;
@@ -191,3 +190,7 @@
       border: 0;
     }
   }
+
+@import "{{ site.theme }}";
+
+// create new styles
