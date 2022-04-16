@@ -40,6 +40,8 @@ Usage:
     - https://github.com/poole/poole#usage
     ```shell
     gem install jekyll jekyll-gist jekyll-sitemap jekyll-seo-tag jekyll-paginate
+    minima
+    github-pages
     ```
 
 https://jekyllrb.com/docs/installation/macos/
