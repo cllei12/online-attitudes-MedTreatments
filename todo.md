@@ -1,0 +1,7 @@
+- [ ] navbar
+- [x] adjust github page for lda vis
+- [ ] enrich description on topic model
+- [ ] ~~heatmap for topic output: heat on scores, [annotation on word](https://www.geeksforgeeks.org/how-to-add-text-in-a-heatmap-cell-annotations-using-seaborn-in-python/)~~
+- [ ] develop new template in `new-template` branch: 
+    - https://uwescience.github.io/DSSG-website-template/
+    - https://escience.washington.edu/dssg/

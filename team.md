@@ -1,5 +1,5 @@
 ---
-layout: team
+layout: page
 title: Team
 description: Characterizing Online Attitudes, Expectations, and Concerns about Novel Medical Treatments
 ---
