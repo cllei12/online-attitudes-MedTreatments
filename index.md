@@ -6,6 +6,17 @@ description: USC CKIDS Datafest 2022
 
 ## Motivation
 
+- Novel medical treatments are regularly discussed in social media
+- Analyzing this data will help us understand:
+  - Concerns about the treatment
+  - Barriers to adoption
+  - Evolution of concerns over time
+- This information will help us to:
+  - Learn how to communicate about novel treatments
+  - Understand how to address concerns
+  - Counsel patients about novel treatment options
+
+
 ## Problems
 
 ## Data
@@ -96,9 +107,13 @@ Topic 8: 0.048*"vasectomy" + 0.014*"procedure" + 0.012*"reversible" + 0.009*"vas
 	src="lda_8.html">
 </iframe>
 
+### States in comments
 
-### Locations in comments
-
+<iframe id="usagraph" 
+	title="State Mentions" 
+	width="100%" height="700px" scrolling="yes" frameborder="0"
+	src="usagraph.html">
+</iframe>
 
 
 ## Conclusion
