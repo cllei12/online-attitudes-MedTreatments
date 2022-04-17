@@ -17,45 +17,44 @@ description: USC CKIDS Datafest 2022
   - Counsel patients about novel treatment options
 
 
-## Problems
-
 ## Data
 
-**Source of Data**
-
-Manually serched in reddit for topics regarding male birth control, and downloaded the post/thread submissions with the comments in it. Also, downloaded the user history of those who commented in it.
+**Source of Data:**
+- The data was collected by searching for relevant queries such as `male birth control` on Google, with the filter `site:reddit.com`.
+- Around **74** posts over **10** years were identified, and the data was exported using [PRAW](https://praw.readthedocs.io/en/stable/_).
+- The data consists of the submissions with the comments in it. Also, the user history of the commenters was downloaded.
 
 **Data files**
-
-- submissions : 74 posts/threads (in .pkl files)
-
+- submissions : 74 posts (in .pkl files)
 - users: 21627 user history of those who commented on the submissions (in .pkl files)
 
-**Data exploration** (*should be in Results section???)*
 
-Histogram of users commenting in more than one reddit submission. 
+## Problem
 
-Vader Sentiment analysis of comments for each submission. 
+We set out to answer the following questions:
+- What years were users most engaged in the topic of male contraception?
+- What general topics can we identify in the discussions on Reddit?
+- What are the sentiments of the users when they write about male contraception?
+- Are there users who engaged with the topic of male birth control over multiple years?
+- Has their sentiment shifted or remained the same over the years?
+- Do users mention specific locations?
+- What is the context around which users mention a location?
 
-Box plot and trend line for overall sentiment over time.
 
 ## Methods
 
-**Tasks in Week1 slides** 
-
-- Histogram of users commenting on multiple posts (Jae, submissions)
-  - Log scale
-- Topic model of comments (Lei, gensim)
+We attempted to answer these questions through the following methods:
+- Creating a histogram of users commenting on multiple posts (Jae)
+- Sentiment analysis through the years (Jae)
+- Topic model of comments (Lei)
   - 5, 10, 20 topics
-- Timeline (Sanjana, by year)
-  - Users posts by yearComments in submissions by year
-  - How long people are engaging
-- Locations in comments (Sanjana)
-  - spaCy NER
+- Timeline (Sanjana)
+  - Users posts by year
+  - Comments in submissions by year
+- Locations in comments using Named Entity Recognition (Sanjana)
   - How many users mention a location
-  - Histogram of locations by user 
-    Starting from 0
-- Gender from comments (Michael)
+  - Histogram of locations by user
+- Predicting gender from comments (Michael)
 
 ## Results
 
@@ -115,5 +114,11 @@ Topic 8: 0.048*"vasectomy" + 0.014*"procedure" + 0.012*"reversible" + 0.009*"vas
 	src="usagraph.html">
 </iframe>
 
+**Data exploration**
+Histogram of users commenting in more than one reddit submission
+Vader Sentiment analysis of comments for each submission
+Box plot and trend line for overall sentiment over time.
+
 
 ## Conclusion
+
