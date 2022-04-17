@@ -1,16 +1,68 @@
 ---
 layout: default
 title: Characterizing Online Attitudes, Expectations, and Concerns about Novel Medical Treatments
-description: Characterizing Online Attitudes, Expectations, and Concerns about Novel Medical Treatments
+description: USC CKIDS Datafest 2022
 ---
 
 ## Motivation
 
-## Problem to solve
+## Problems
 
-## Data and methods
+## Data
+
+**Source of Data**
+
+Manually serched in reddit for topics regarding male birth control, and downloaded the post/thread submissions with the comments in it. Also, downloaded the user history of those who commented in it.
+
+**Data files**
+
+- submissions : 74 posts/threads (in .pkl files)
+
+- users: 21627 user history of those who commented on the submissions (in .pkl files)
+
+**Data exploration** (*should be in Results section???)*
+
+Histogram of users commenting in more than one reddit submission. 
+
+Vader Sentiment analysis of comments for each submission. 
+
+Box plot and trend line for overall sentiment over time.
+
+## Methods
+
+**Tasks in Week1 slides** 
+
+- Histogram of users commenting on multiple posts (Jae, submissions)
+  - Log scale
+- Topic model of comments (Lei, gensim)
+  - 5, 10, 20 topics
+- Timeline (Sanjana, by year)
+  - Users posts by yearComments in submissions by year
+  - How long people are engaging
+- Locations in comments (Sanjana)
+  - spaCy NER
+  - How many users mention a location
+  - Histogram of locations by user 
+    Starting from 0
+- Gender from comments (Michael)
 
 ## Results
+
+### Data Exploration
+
+**Histogram**
+
+![histogram](images/data-exploration/Histogram.png)
+
+**Sentiment Analysis**
+
+![histogram](images/data-exploration/negative_wordcloud.png)
+![histogram](images/data-exploration/positive_wordcloud.png)
+![histogram](images/data-exploration/Sentiment_scores.png)
+
+### Timeline 
+
+
 
 ### Topic Model
 
@@ -43,5 +95,10 @@ Topic 8: 0.048*"vasectomy" + 0.014*"procedure" + 0.012*"reversible" + 0.009*"vas
 	width="100%" height="700px" scrolling="yes" frameborder="0"
 	src="lda_8.html">
 </iframe>
+
+
+### Locations in comments
+
+
 
 ## Conclusion
