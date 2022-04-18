@@ -52,11 +52,57 @@ We attempted to answer these questions through the following methods:
 
 - Creating a histogram of users commenting on multiple posts (Jae)
   -	Using matplotlib to represent the frequency of usernames present in multiple Reddit submissions.
-
+  
 - Sentiment analysis through the years (Jae)
   -	Using [VADER sentiment analysis](https://github.com/cjhutto/vaderSentiment), the overall sentiment of each Reddit submissions was calculated by analyzing all comments within the submission. 
   - Using WordCloud, comments with negative and positive sentiments were selected to create a word cloud to depicts words most found in each respective sentiment. 
   -	Using seaborn, boxplots of sentiment scores for all Reddit submissions was created using boxplot, stripplot, and pointplot, to represent all data points and a line graph of all means. A trendline using all means was also included in the figure. 
+
+<details>
+  <summary>Click to expand for more details on histogram and sentiment analysis</summary>
+  <p>
+  Histogram of users commenting in multiple Reddit submissions. 
+
+  -	Created a list of usernames found in the comment section of each submission. 
+
+  -	Usernames with multiple comments were included only once, and deleted usernames were excluded.
+
+  -	From the list of unique usernames for all Reddit submissions, the frequency of each username presents in all submissions were calculated. 
+
+  -	Using matplotlib, a histogram was plotted to represent the frequency of usernames commenting in multiple Reddit submissions. 
+
+  Sentiment Analysis
+
+  -	Performed sentiment analysis of all comments in each Reddit submission by using (Valence Aware Dictionary and sEntiment Reasoner) VADER. 
+
+  -	A list was created to store the positive, negative, neutral and compound sentiment score for all comments of the Reddit submission.
+
+  -	Comments with a compound sentiment scores greater than or equal to 0.05 was considered as positive sentiments, and compound sentiment scores less than or equal to -0.05 was considered as negative sentiments. Neutral sentiment ranged a compound sentiment scores between -0.05 and 0.05.
+
+  Word Cloud
+
+  -	Lists of comments with negative and positive sentiment were created, selecting comments with compound sentiment scores less than -0.9 and greater than 0.9 for their respective lists. 
+
+  -	All comments from both negative sentiments and positive sentiments were normalized by removing special characters, numbers and stopwords using (Natural Language Toolkit) NLTK. 
+
+  -	The resulting positive sentiment list of words and negative sentiment list of words were used to create their respective word cloud, using WordCloud. 
+
+  Sentiment score Boxplot of all Reddit Submission
+
+  -	The lists of compound sentiment scores of all Reddit submissions were organized in chronological order.
+
+  -	Seaborn was used to create a graphical representation of the result of the sentiment analysis, in chronological order in the x-axis and the sentiment score in the y-axis.
+
+  -	Stripplot was used to plot all compound sentiment scores of all comments in each Reddit submission.
+
+  -	Boxplot was used to create a box plot of each Reddit submission.
+
+  -	Pointplot was used to create a line graph of the mean sentiment for each Reddit submission. 
+
+  -	A trendline of all mean scores was included using a numpy polyfit and poly1d.
+  </p>
+</details>
+
 
 - Topic model of comments (Lei)
 
