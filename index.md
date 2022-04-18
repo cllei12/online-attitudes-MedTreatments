@@ -60,7 +60,17 @@ We attempted to answer these questions through the following methods:
 
 ### Data Exploration
 
-**Histogram**
+
+**Number of posts by subreddits** <br>
+![Number of posts by subreddits](images/data-exploration/posts_by_subreddit.png)
+
+**Number of posts by year** <br>
+![Number of posts by year](images/data-exploration/posts_by_year.png)
+
+**Number of comments by year** <br>
+![Number of comments by year](images/data-exploration/comments_by_year.png)
+
+**Users commenting in multiple posts**
 
 ![histogram](images/data-exploration/Histogram.png)
 
@@ -69,10 +79,6 @@ We attempted to answer these questions through the following methods:
 ![histogram](images/data-exploration/negative_wordcloud.png)
 ![histogram](images/data-exploration/positive_wordcloud.png)
 ![histogram](images/data-exploration/Sentiment_scores.png)
-
-### Timeline 
-
-
 
 ### Topic Model
 
@@ -106,7 +112,11 @@ Topic 8: 0.048*"vasectomy" + 0.014*"procedure" + 0.012*"reversible" + 0.009*"vas
 	src="lda_8.html">
 </iframe>
 
-### States in comments
+**Location mentions**
+
+![Location mentions](images/data-exploration/location_mentions.png)
+
+**Number of times US states mentioned in comments**
 
 <iframe id="usagraph" 
 	title="State Mentions" 
@@ -114,11 +124,30 @@ Topic 8: 0.048*"vasectomy" + 0.014*"procedure" + 0.012*"reversible" + 0.009*"vas
 	src="usagraph.html">
 </iframe>
 
+**Top word used in the most-mentioned US states**
+
+Texas <br>
+![Number of posts by subreddits](images/data-exploration/texas_top_words.png)
+
+California <br>
+![Number of posts by year](images/data-exploration/california_top_words.png)
+
+New York <br>
+![Number of comments by year](images/data-exploration/new_york_top_words.png)
+
+Florida <br>
+![Number of comments by year](images/data-exploration/florida_top_words.png)
+
+
+
+
 **Data exploration**
 Histogram of users commenting in more than one reddit submission
 Vader Sentiment analysis of comments for each submission
 Box plot and trend line for overall sentiment over time.
 
+
+### Timeline 
 
 ## Conclusion
 
