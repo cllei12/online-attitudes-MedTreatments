@@ -100,7 +100,7 @@ As part of preprocessing, we will:
 <details>
   <summary>Click to expand for more details on text preprocessing</summary>
 
-  **Tokenize and Remove Noise**
+  <h5>Tokenize and Remove Noise</h5>
 
   First, we tokenized the text using the tokenizer `gensim.utils.tokenize()` from `Gensim`. We removed the following tokens or comments as they don’t tend to be useful, and the comments contain a lot of them.
 
@@ -110,30 +110,42 @@ As part of preprocessing, we will:
   - common and rare words: filter out words that occur less than 5 documents, or more than 30% of the documents.
   - [deleted] comments
 
-  **Lemmatize the Tokens**
+  <h5>Lemmatize the Tokens</h5>
 
+  <p>
   We found some words with the same meaning could occur in one topic, especially gender words. For example, our topic model could generate a topic containing `female`, `women`, and `woman` at the same time. Gender words are important for our model because we are studying topics like birth control, but words with the same meaning could appear in a topic, which will harm the informativeness of our topic model.  
 
   We use the WordNet lemmatizer from `NLTK`. A lemmatizer could produce more readable words and help our topic model generate more informative topics. This is very desirable in topic modeling.
+  </p>
 
-  **Bigrams**
-
+  <h5>Bigrams</h5>
+  <p>
   We find bigrams in the documents(comments). Bigrams are sets of two adjacent words. Using bigrams we can get phrases like "birth_control" in our output (spaces are replaced with underscores); without bigrams we would only get "birth" and "control".
+  
 
-  Then, add bigrams into our corpus, because we would like to keep the words "birth" and "control" as well as the bigram "birth_control". The following block shows part of phrases found by the bigram model
+  Then, add bigrams into our corpus, because we would like to keep the words "birth" and "control" as well as the bigram "birth_control". The following block shows part of phrases found by the bigram model</p>
 
+  <p>
   > ['fda_approval', 'lasts_years', 'test_subjects', 'sperm_count', 'birth_control', 'family_planning', 'tl_dr', 'reproductive_organs', 'shoot_blanks', 'bullet_proof', 'proof_vest', 'sex_drive', 'paying_child', 'child_support', 'hell_yes', 'female_birth', 'protect_stds', 'male_birth', 'proven_safe', 'birth_controls', 'shooting_blanks', 'approved_fda', 'want_kids', 'hormonal_birth', 'use_condoms', 'shoot_bulletproof', ...]
+  </p>
 
+  <p>
   The output of topic model will show that bigrams indeed improved our model to generate better topics. For instance, some topics contains bigrams `birth_control` and `male_birth`.  
+  </p>
 
-  **Bag-of-words**
+  <h5>Bag-of-words</h5>
 
+  <p>
   Bag-of-words model is an approach to represent a document as a vector. Under the bag-of-words model each document is represented by a vector containing the frequency counts of each word in the dictionary.
+  </p>
 
+  <p>
   For example, assume we have a dictionary containing the words `['coffee', 'milk', 'sugar', 'spoon']`. A document consisting of the string "coffee milk coffee" would then be represented by the vector `[2, 1, 0, 0]`. One of the main properties of the bag-of-words model is that it completely ignores the order of the tokens in the document that is encoded, which is where the name bag-of-words comes from.
+  </p>
 
-  Here, we created a dictionary representation of the documents with `gensim.corpora.Dictionary` and `doc2bow()` method could create a corpus as the input of our topic model. 
-
+  <p>
+  Here, we created a dictionary representation of the documents with `gensim.corpora.Dictionary` and `doc2bow()` method could create a corpus as the input of our topic model.
+  </p> 
 </details>
 
 **Topic Model Training**
@@ -144,21 +156,22 @@ Hyperparameter tuning shows the LDA model with 8 topics perform best. Hence, we 
 
 <details>
   <summary>Click to see the details on hyperparameter tuning</summary>
-
+  <p>
   We are ready to train the LDA model. We will first discuss how to set some of the training parameters.
-
-  First of all, the elephant in the room: how many topics do we need? Let’s perform a series of sensitivity tests to help determine the following model hyperparameters
-
-  - Number of Topics $K$
-  - Dirichlet hyperparameter $\alpha$: Document-Topic Density
-  - Dirichlet hyperparameter $\beta$: Word-Topic Density
-
-  We’ll perform these tests in sequence, one parameter at a time by keeping others constant and run them over the two different validation corpus sets. We'll use topic coherence, `C_v`, as our choice of metric for performance comparison. We found the default setting, `alpha='symmetric', \beta='auto'`, perform best, so we will keep this setting to explore the optimal number of topics. 
-
+  </p>
+  <p>
+  First of all, the elephant in the room: how many topics do we need? Let’s perform a series of sensitivity tests to help determine the following model hyperparameters</p>
+  <ul>
+  <li> Number of Topics $K$ </li>
+  <li> Dirichlet hyperparameter $\alpha$: Document-Topic Density </li>
+  <li> Dirichlet hyperparameter $\beta$: Word-Topic Density </li>
+  </ul>
+  <p>
+  We’ll perform these tests in sequence, one parameter at a time by keeping others constant and run them over the two different validation corpus sets. We'll use topic coherence, `C_v`, as our choice of metric for performance comparison. We found the default setting, `alpha='symmetric', \beta='auto'`, perform best, so we will keep this setting to explore the optimal number of topics. </p>
+  <p>
   Pick the model that gave the highest `C_v`. In this case, we picked $K=8$ with highest average topic coherence 0.6425.
-
-  ![hyperparameter tuning](images/topic-model/c_v_%5B'symmetric'%5D_%5B'auto'%5D.png)
-
+  </p>
+  <img src="images/topic-model/c_v_%5B'symmetric'%5D_%5B'auto'%5D.png" alt="tuning">
 </details>
 
 **Output of Topic Model**
@@ -192,12 +205,15 @@ The above results are hard to read, so we created interactive visualization with
 
 <details>
   <summary>Click to expand for more details on topics' visualization</summary>
-
+  <p>
   On the left, the topics are plotted as circles, whose centers are defined by the computed distance between topics (projected into 2 dimensions). The prevalence of each topic is indicated by the circle’s area. On the right, two juxtaposed bars showing the topic-specific frequency of each term (in red) and the corpus-wide frequency (in blueish gray). When no topic is selected, the right panel displays the top 30 most salient terms for the dataset.
-
+  </p>
+  <p>
   Relevance is denoted by $\lambda$, the weight assigned to the probability of a term in a topic relative to its lift. When λ = 1, the terms are ranked by their probabilities within the topic (the ‘regular’ method) while when λ = 0, the terms are ranked only by their lift. The interface allows to adjust the value of λ between 0 and 1.
-
-  For more details about topics' visualization, please see this paper, [LDAvis: A method for visualizing and interpreting topics](https://nlp.stanford.edu/events/illvi2014/papers/sievert-illvi2014.pdf).
+  </p>
+  <p>
+  For more details about topics' visualization, please see this paper, <a href="https://nlp.stanford.edu/events/illvi2014/papers/sievert-illvi2014.pdf">LDAvis: A method for visualizing and interpreting topics</a>.
+  </p>
 
 </details>
 
