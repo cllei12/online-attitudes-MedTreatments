@@ -29,6 +29,9 @@ description: USC CKIDS Datafest 2022
 **Data files**
 - submissions : 74 posts (in .pkl files)
 - users: 21627 user history of those who commented on the submissions (in .pkl files)
+- Out of 41,792 comments read, 5179 comments had deleted user information. 
+- 22,099 unique users were found from all submissions.
+
 
 
 ## Problem
@@ -46,8 +49,16 @@ We set out to answer the following questions:
 ## Methods
 
 We attempted to answer these questions through the following methods:
+
 - Creating a histogram of users commenting on multiple posts (Jae)
+
+  -	Using matplotlib to represent the frequency of usernames present in multiple Reddit submissions.
+
 - Sentiment analysis through the years (Jae)
+  -	Using [VADER sentiment analysis](https://github.com/cjhutto/vaderSentiment), the overall sentiment of each Reddit submissions was calculated by analyzing all comments within the submission. 
+  - Using WordCloud, comments with negative and positive sentiments were selected to create a word cloud to depicts words most found in each respective sentiment. 
+  -	Using seaborn, boxplots of sentiment scores for all Reddit submissions was created using boxplot, stripplot, and pointplot, to represent all data points and a line graph of all means. A trendline using all means was also included in the figure. 
+
 - Topic model of comments (Lei)
 
   <!-- Topic Models, in a nutshell, are a type of statistical language models used for uncovering hidden structure in a collection of texts, which is used to classify text in a document to a particular topic.
@@ -57,9 +68,11 @@ We attempted to answer these questions through the following methods:
 - Timeline (Sanjana)
   - Users posts by year
   - Comments in submissions by year
+
 - Locations in comments using Named Entity Recognition (Sanjana)
   - How many users mention a location
   - Histogram of locations by user
+  
 - Predicting gender from comments (Michael)
 
 ## Results
@@ -77,9 +90,23 @@ We attempted to answer these questions through the following methods:
 
 **Users commenting in multiple posts**
 
+We drew histogram of users commenting in multiple Reddit submissions.
+-	From the 41,792 comments in 74 Reddit submissions, and excluding 5179 comments with deleted usernames, 22099 unique Reddit usernames were identified. 
+-	21381 Reddit usernames participated in only one Reddit submission. 
+-	643 Reddit usernames commented in two Reddit submissions.
+-	61 Reddit usernames were found in three Reddit submissions, following with 8 Reddit usernames in four Reddit submissions, and 4 Reddit usernames in five Reddit submissions. 
+-	 2 usernames commented in the six submissions, the maximum number of different Reddit submissions. 
+
 ![histogram](images/data-exploration/Histogram.png)
 
 **Sentiment Analysis**
+
+-	From the 74 Reddit submissions, one submission was excluded for the lack of comments, and 73 submissions were included in the sentiment analysis. 
+-	The first Reddit submission was dated February, 2010 and the last Reddit submission was dated November, 2021. 
+-	From the data collected, the figure demonstrates a greater number of Reddit submission with an overall positive sentiment toward male contraception. 
+-	In the trendline t1=0.0762 and t73 = 0.0686 with a delta of -0.0076 from the first Reddit submission and the last Reddit submission. 
+-	Based on the data collected, it is inconclusive to determine if sentiment change for male contraception. 
+
 
 ![histogram](images/data-exploration/negative_wordcloud.png)
 ![histogram](images/data-exploration/positive_wordcloud.png)
