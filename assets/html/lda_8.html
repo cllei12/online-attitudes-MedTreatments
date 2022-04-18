@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="assets/css/ldavis.css">
+<link rel="stylesheet" type="text/css" href="../css/ldavis.css">
 <!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/bmabey/pyLDAvis@3.3.1/pyLDAvis/js/ldavis.v1.0.0.css"> -->
 
 
@@ -26,14 +26,14 @@ if(typeof(LDAvis) !== "undefined"){
    require.config({paths: {d3: "https://d3js.org/d3.v5"}});
    require(["d3"], function(d3){
       window.d3 = d3;
-      LDAvis_load_lib("assets/js/ldavis.js", function(){
+      LDAvis_load_lib("../js/ldavis.js", function(){
         new LDAvis("#" + "ldavis_el59766108087807206994035654", ldavis_el59766108087807206994035654_data);
       });
     });
 }else{
     // require.js not available: dynamically load d3 & LDAvis
     LDAvis_load_lib("https://d3js.org/d3.v5.js", function(){
-         LDAvis_load_lib("assets/js/ldavis.js", function(){
+         LDAvis_load_lib("../js/ldavis.js", function(){
                  new LDAvis("#" + "ldavis_el59766108087807206994035654", ldavis_el59766108087807206994035654_data);
             })
          });

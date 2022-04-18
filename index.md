@@ -6,6 +6,8 @@ description: USC CKIDS Datafest 2022
 
 ## Motivation
 
+<!-- Novel, or hypothesized medical treatments, such as COVID-19 vaccines and male contraception, are regularly discussed on social media. For example, on the AskReddit subreddit, questions of the form “”Would you take [x] if it existed?”” Aside from willingness to use these novel treatments, the answers to these questions contain important clues to peoples' latent concerns and barriers to adoption of novel medications. Understanding them can provide crucial information about how to introduce, communicate, and counsel about new medications when they come to market.  -->
+
 - Novel medical treatments are regularly discussed in social media
 - Analyzing this data will help us understand:
   - Concerns about the treatment
@@ -27,6 +29,9 @@ description: USC CKIDS Datafest 2022
 **Data files**
 - submissions : 74 posts (in .pkl files)
 - users: 21627 user history of those who commented on the submissions (in .pkl files)
+- Out of 41,792 comments read, 5179 comments had deleted user information. 
+- 22,099 unique users were found from all submissions.
+
 
 
 ## Problem
@@ -44,22 +49,80 @@ We set out to answer the following questions:
 ## Methods
 
 We attempted to answer these questions through the following methods:
+
 - Creating a histogram of users commenting on multiple posts (Jae)
+  -	Using matplotlib to represent the frequency of usernames present in multiple Reddit submissions.
+  
 - Sentiment analysis through the years (Jae)
+  -	Using [VADER sentiment analysis](https://github.com/cjhutto/vaderSentiment), the overall sentiment of each Reddit submissions was calculated by analyzing all comments within the submission. 
+  - Using WordCloud, comments with negative and positive sentiments were selected to create a word cloud to depicts words most found in each respective sentiment. 
+  -	Using seaborn, boxplots of sentiment scores for all Reddit submissions was created using boxplot, stripplot, and pointplot, to represent all data points and a line graph of all means. A trendline using all means was also included in the figure. 
+
+<details>
+  <summary>Click to expand for more details on histogram and sentiment analysis</summary>
+  <p>
+  Histogram of users commenting in multiple Reddit submissions. 
+
+  -	Created a list of usernames found in the comment section of each submission. 
+
+  -	Usernames with multiple comments were included only once, and deleted usernames were excluded.
+
+  -	From the list of unique usernames for all Reddit submissions, the frequency of each username presents in all submissions were calculated. 
+
+  -	Using matplotlib, a histogram was plotted to represent the frequency of usernames commenting in multiple Reddit submissions. 
+
+  Sentiment Analysis
+
+  -	Performed sentiment analysis of all comments in each Reddit submission by using (Valence Aware Dictionary and sEntiment Reasoner) VADER. 
+
+  -	A list was created to store the positive, negative, neutral and compound sentiment score for all comments of the Reddit submission.
+
+  -	Comments with a compound sentiment scores greater than or equal to 0.05 was considered as positive sentiments, and compound sentiment scores less than or equal to -0.05 was considered as negative sentiments. Neutral sentiment ranged a compound sentiment scores between -0.05 and 0.05.
+
+  Word Cloud
+
+  -	Lists of comments with negative and positive sentiment were created, selecting comments with compound sentiment scores less than -0.9 and greater than 0.9 for their respective lists. 
+
+  -	All comments from both negative sentiments and positive sentiments were normalized by removing special characters, numbers and stopwords using (Natural Language Toolkit) NLTK. 
+
+  -	The resulting positive sentiment list of words and negative sentiment list of words were used to create their respective word cloud, using WordCloud. 
+
+  Sentiment score Boxplot of all Reddit Submission
+
+  -	The lists of compound sentiment scores of all Reddit submissions were organized in chronological order.
+
+  -	Seaborn was used to create a graphical representation of the result of the sentiment analysis, in chronological order in the x-axis and the sentiment score in the y-axis.
+
+  -	Stripplot was used to plot all compound sentiment scores of all comments in each Reddit submission.
+
+  -	Boxplot was used to create a box plot of each Reddit submission.
+
+  -	Pointplot was used to create a line graph of the mean sentiment for each Reddit submission. 
+
+  -	A trendline of all mean scores was included using a numpy polyfit and poly1d.
+  </p>
+</details>
+
+
 - Topic model of comments (Lei)
-  - 5, 10, 20 topics
+
+  <!-- Topic Models, in a nutshell, are a type of statistical language models used for uncovering hidden structure in a collection of texts, which is used to classify text in a document to a particular topic.
+
+  Tools: `nltk` and `gensim` -->
+
 - Timeline (Sanjana)
   - Users posts by year
   - Comments in submissions by year
+
 - Locations in comments using Named Entity Recognition (Sanjana)
   - How many users mention a location
   - Histogram of locations by user
-- Predicting gender from comments (Michael)
+
+<!-- - Predicting gender from comments (Michael) -->
 
 ## Results
 
 ### Data Exploration
-
 
 **Number of posts by subreddits** <br>
 ![Number of posts by subreddits](images/data-exploration/posts_by_subreddit.png)
@@ -72,9 +135,23 @@ We attempted to answer these questions through the following methods:
 
 **Users commenting in multiple posts**
 
+We drew histogram of users commenting in multiple Reddit submissions.
+-	From the 41,792 comments in 74 Reddit submissions, and excluding 5179 comments with deleted usernames, 22099 unique Reddit usernames were identified. 
+-	21381 Reddit usernames participated in only one Reddit submission. 
+-	643 Reddit usernames commented in two Reddit submissions.
+-	61 Reddit usernames were found in three Reddit submissions, following with 8 Reddit usernames in four Reddit submissions, and 4 Reddit usernames in five Reddit submissions. 
+-	 2 usernames commented in the six submissions, the maximum number of different Reddit submissions. 
+
 ![histogram](images/data-exploration/Histogram.png)
 
 **Sentiment Analysis**
+
+-	From the 74 Reddit submissions, one submission was excluded for the lack of comments, and 73 submissions were included in the sentiment analysis. 
+-	The first Reddit submission was dated February, 2010 and the last Reddit submission was dated November, 2021. 
+-	From the data collected, the figure demonstrates a greater number of Reddit submission with an overall positive sentiment toward male contraception. 
+-	In the trendline t1=0.0762 and t73 = 0.0686 with a delta of -0.0076 from the first Reddit submission and the last Reddit submission. 
+-	Based on the data collected, it is inconclusive to determine if sentiment change for male contraception. 
+
 
 ![histogram](images/data-exploration/negative_wordcloud.png)
 ![histogram](images/data-exploration/positive_wordcloud.png)
@@ -82,9 +159,96 @@ We attempted to answer these questions through the following methods:
 
 ### Topic Model
 
-Topic modeling is a method for unsupervised classification of documents, similar to clustering on numeric data, which finds some natural groups of items (topics).
+**Text Preprocessing**
+
+As part of preprocessing, we will:
+
+- Tokenize documents (split the documents into tokens) and remove noise. 
+- Lemmatize the tokens. `nltk.stem.wordnet.WordNetLemmatizer`
+- Compute bigrams. `gensim.models.Phrases`
+- Compute a bag-of-words representation of the data. `gensim.corpora.Dictionary`
+
+
+<details>
+  <summary>Click to expand for more details on text preprocessing</summary>
+
+  <h4>Tokenize and Remove Noise</h4>
+
+  First, we tokenized the text using the tokenizer `gensim.utils.tokenize()` from `Gensim`. We removed the following tokens or comments as they don’t tend to be useful, and the comments contain a lot of them.
+
+  - stopwords: `gensim.parsing.preprocessing.STOPWORDS`
+  - single character tokens and numeric tokens 
+  - URLs: regular expression `r'http\S+'`
+  - common and rare words: filter out words that occur less than 5 documents, or more than 30% of the documents.
+  - [deleted] comments
+
+  <h4>Lemmatize the Tokens</h4>
+
+  <p>
+  We found some words with the same meaning could occur in one topic, especially gender words. For example, our topic model could generate a topic containing `female`, `women`, and `woman` at the same time. Gender words are important for our model because we are studying topics like birth control, but words with the same meaning could appear in a topic, which will harm the informativeness of our topic model.  
+
+  We use the WordNet lemmatizer from `NLTK`. A lemmatizer could produce more readable words and help our topic model generate more informative topics. This is very desirable in topic modeling.
+  </p>
+
+  <h4>Bigrams</h4>
+  <p>
+  We find bigrams in the documents(comments). Bigrams are sets of two adjacent words. Using bigrams we can get phrases like "birth_control" in our output (spaces are replaced with underscores); without bigrams we would only get "birth" and "control".
+  
+
+  Then, add bigrams into our corpus, because we would like to keep the words "birth" and "control" as well as the bigram "birth_control". The following block shows part of phrases found by the bigram model</p>
+
+  <p>
+  > ['fda_approval', 'lasts_years', 'test_subjects', 'sperm_count', 'birth_control', 'family_planning', 'tl_dr', 'reproductive_organs', 'shoot_blanks', 'bullet_proof', 'proof_vest', 'sex_drive', 'paying_child', 'child_support', 'hell_yes', 'female_birth', 'protect_stds', 'male_birth', 'proven_safe', 'birth_controls', 'shooting_blanks', 'approved_fda', 'want_kids', 'hormonal_birth', 'use_condoms', 'shoot_bulletproof', ...]
+  </p>
+
+  <p>
+  The output of topic model will show that bigrams indeed improved our model to generate better topics. For instance, some topics contains bigrams `birth_control` and `male_birth`.  
+  </p>
+
+  <h4>Bag-of-words</h4>
+
+  <p>
+  Bag-of-words model is an approach to represent a document as a vector. Under the bag-of-words model each document is represented by a vector containing the frequency counts of each word in the dictionary.
+  </p>
+
+  <p>
+  For example, assume we have a dictionary containing the words `['coffee', 'milk', 'sugar', 'spoon']`. A document consisting of the string "coffee milk coffee" would then be represented by the vector `[2, 1, 0, 0]`. One of the main properties of the bag-of-words model is that it completely ignores the order of the tokens in the document that is encoded, which is where the name bag-of-words comes from.
+  </p>
+
+  <p>
+  Here, we created a dictionary representation of the documents with `gensim.corpora.Dictionary` and `doc2bow()` method could create a corpus as the input of our topic model.
+  </p> 
+</details>
+
+**Topic Model Training**
+
+Our topic model is based on Latent Dirichlet allocation (LDA). LDA is a generative statistical model that allows sets of observations to be explained by unobserved groups that explain why some parts of the data are similar.
+
+Hyperparameter tuning shows the LDA model with 8 topics perform best. Hence, we used `gensim.models.Lda` to train a LDA model with 8 topics where each topic is a combination of keywords, and each keyword contributes a certain weightage to the topic. 
+
+<details>
+  <summary>Click to see the details on hyperparameter tuning</summary>
+  <p>
+  We are ready to train the LDA model. We will first discuss how to set some of the training parameters.
+  </p>
+  <p>
+  First of all, the elephant in the room: how many topics do we need? Let’s perform a series of sensitivity tests to help determine the following model hyperparameters</p>
+  <ul>
+  <li> Number of Topics (K) </li>
+  <li> Dirichlet hyperparameter (alpha): Document-Topic Density </li>
+  <li> Dirichlet hyperparameter (beta): Word-Topic Density </li>
+  </ul>
+  <p>
+  We’ll perform these tests in sequence, one parameter at a time by keeping others constant and run them over the two different validation corpus sets. We'll use topic coherence, 'C_v', as our choice of metric for performance comparison. We found the default setting, "alpha='symmetric', beta='auto'", perform best, so we will keep this setting to explore the optimal number of topics. </p>
+  <p>
+  Pick the model that gave the highest 'C_v'. In this case, we picked K=8 with highest average topic coherence 0.6425.
+  </p>
+  <img src="images/topic-model/c_v_%5B'symmetric'%5D_%5B'auto'%5D.png" alt="tuning">
+</details>
 
 **Output of Topic Model**
+
+Then, let's explore the 8 topics generated by our topic models. The following cell show combinations of keywords and the weightage of keywords for each topic. 
 
 ```
 Topic 1: 0.057*"female" + 0.034*"pill" + 0.029*"male" + 0.023*"effect" + 0.021*"birth_control" + 0.011*"think" + 0.009*"want" + 0.009*"taking" + 0.008*"control" + 0.007*"like"
@@ -105,6 +269,27 @@ Topic 8: 0.048*"vasectomy" + 0.014*"procedure" + 0.012*"reversible" + 0.009*"vas
 ```
 
 **Topic Model Visualization**
+
+The above results are hard to read, so we created interactive visualization with [`pyLDAvis`](https://pyldavis.readthedocs.io/en/latest/readme.html) package to interpret the topics. The interactive graph provides:
+
+- a left panel that depicts a global view of the model (how prevalent each topic is and how topics relate to each other);
+- a right panel containing a bar chart – the bars represent the terms that are most useful in interpreting the topic currently selected (what the meaning of each topic is).
+
+<details>
+  <summary>Click to expand for more details on topics' visualization</summary>
+  <p>
+  On the left, the topics are plotted as circles, whose centers are defined by the computed distance between topics (projected into 2 dimensions). The prevalence of each topic is indicated by the circle’s area. On the right, two juxtaposed bars showing the topic-specific frequency of each term (in red) and the corpus-wide frequency (in blueish gray). When no topic is selected, the right panel displays the top 30 most salient terms for the dataset.
+  </p>
+  <p>
+  Relevance is denoted by λ, the weight assigned to the probability of a term in a topic relative to its lift. When λ = 1, the terms are ranked by their probabilities within the topic (the ‘regular’ method) while when λ = 0, the terms are ranked only by their lift. The interface allows to adjust the value of λ between 0 and 1.
+  </p>
+  <p>
+  For more details about topics' visualization, please see this paper, <a href="https://nlp.stanford.edu/events/illvi2014/papers/sievert-illvi2014.pdf">LDAvis: A method for visualizing and interpreting topics</a>.
+  </p>
+
+</details>
+
+For instance, if we choose topic 1 on the left panel, we can see the top most relevant terms for Topic 1 contains, female, pill, male, effect, birth_control, etc. And if we choose the term "pill", the right panel will show the conditional topic distribution given the term "pill". Obviously, "pill" is mentioned more in topic 1 than other topics.
 
 <iframe id="lda_vis" 
 	title="Topic Model Visualization" 
