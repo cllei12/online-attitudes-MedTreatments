@@ -6,7 +6,7 @@ description: USC CKIDS Datafest 2022
 
 ## Motivation
 
-Novel, or hypothesized medical treatments, such as COVID-19 vaccines and male contraception, are regularly discussed on social media. For example, on the AskReddit subreddit, questions of the form “”Would you take [x] if it existed?”” Aside from willingness to use these novel treatments, the answers to these questions contain important clues to peoples' latent concerns and barriers to adoption of novel medications. Understanding them can provide crucial information about how to introduce, communicate, and counsel about new medications when they come to market. 
+<!-- Novel, or hypothesized medical treatments, such as COVID-19 vaccines and male contraception, are regularly discussed on social media. For example, on the AskReddit subreddit, questions of the form “”Would you take [x] if it existed?”” Aside from willingness to use these novel treatments, the answers to these questions contain important clues to peoples' latent concerns and barriers to adoption of novel medications. Understanding them can provide crucial information about how to introduce, communicate, and counsel about new medications when they come to market.  -->
 
 - Novel medical treatments are regularly discussed in social media
 - Analyzing this data will help us understand:
@@ -50,9 +50,9 @@ We attempted to answer these questions through the following methods:
 - Sentiment analysis through the years (Jae)
 - Topic model of comments (Lei)
 
-  Topic Models, in a nutshell, are a type of statistical language models used for uncovering hidden structure in a collection of texts, which is used to classify text in a document to a particular topic.
+  <!-- Topic Models, in a nutshell, are a type of statistical language models used for uncovering hidden structure in a collection of texts, which is used to classify text in a document to a particular topic.
 
-  Tools: `nltk` and `gensim`
+  Tools: `nltk` and `gensim` -->
 
 - Timeline (Sanjana)
   - Users posts by year
@@ -100,7 +100,7 @@ As part of preprocessing, we will:
 <details>
   <summary>Click to expand for more details on text preprocessing</summary>
 
-  <h5>Tokenize and Remove Noise</h5>
+  <h4>Tokenize and Remove Noise</h4>
 
   First, we tokenized the text using the tokenizer `gensim.utils.tokenize()` from `Gensim`. We removed the following tokens or comments as they don’t tend to be useful, and the comments contain a lot of them.
 
@@ -110,7 +110,7 @@ As part of preprocessing, we will:
   - common and rare words: filter out words that occur less than 5 documents, or more than 30% of the documents.
   - [deleted] comments
 
-  <h5>Lemmatize the Tokens</h5>
+  <h4>Lemmatize the Tokens</h4>
 
   <p>
   We found some words with the same meaning could occur in one topic, especially gender words. For example, our topic model could generate a topic containing `female`, `women`, and `woman` at the same time. Gender words are important for our model because we are studying topics like birth control, but words with the same meaning could appear in a topic, which will harm the informativeness of our topic model.  
@@ -118,7 +118,7 @@ As part of preprocessing, we will:
   We use the WordNet lemmatizer from `NLTK`. A lemmatizer could produce more readable words and help our topic model generate more informative topics. This is very desirable in topic modeling.
   </p>
 
-  <h5>Bigrams</h5>
+  <h4>Bigrams</h4>
   <p>
   We find bigrams in the documents(comments). Bigrams are sets of two adjacent words. Using bigrams we can get phrases like "birth_control" in our output (spaces are replaced with underscores); without bigrams we would only get "birth" and "control".
   
@@ -162,14 +162,14 @@ Hyperparameter tuning shows the LDA model with 8 topics perform best. Hence, we 
   <p>
   First of all, the elephant in the room: how many topics do we need? Let’s perform a series of sensitivity tests to help determine the following model hyperparameters</p>
   <ul>
-  <li> Number of Topics $K$ </li>
-  <li> Dirichlet hyperparameter $\alpha$: Document-Topic Density </li>
-  <li> Dirichlet hyperparameter $\beta$: Word-Topic Density </li>
+  <li> Number of Topics (K) </li>
+  <li> Dirichlet hyperparameter (alpha): Document-Topic Density </li>
+  <li> Dirichlet hyperparameter (beta): Word-Topic Density </li>
   </ul>
   <p>
-  We’ll perform these tests in sequence, one parameter at a time by keeping others constant and run them over the two different validation corpus sets. We'll use topic coherence, `C_v`, as our choice of metric for performance comparison. We found the default setting, `alpha='symmetric', \beta='auto'`, perform best, so we will keep this setting to explore the optimal number of topics. </p>
+  We’ll perform these tests in sequence, one parameter at a time by keeping others constant and run them over the two different validation corpus sets. We'll use topic coherence, 'C_v', as our choice of metric for performance comparison. We found the default setting, "alpha='symmetric', beta='auto'", perform best, so we will keep this setting to explore the optimal number of topics. </p>
   <p>
-  Pick the model that gave the highest `C_v`. In this case, we picked $K=8$ with highest average topic coherence 0.6425.
+  Pick the model that gave the highest 'C_v'. In this case, we picked K=8 with highest average topic coherence 0.6425.
   </p>
   <img src="images/topic-model/c_v_%5B'symmetric'%5D_%5B'auto'%5D.png" alt="tuning">
 </details>
@@ -209,7 +209,7 @@ The above results are hard to read, so we created interactive visualization with
   On the left, the topics are plotted as circles, whose centers are defined by the computed distance between topics (projected into 2 dimensions). The prevalence of each topic is indicated by the circle’s area. On the right, two juxtaposed bars showing the topic-specific frequency of each term (in red) and the corpus-wide frequency (in blueish gray). When no topic is selected, the right panel displays the top 30 most salient terms for the dataset.
   </p>
   <p>
-  Relevance is denoted by $\lambda$, the weight assigned to the probability of a term in a topic relative to its lift. When λ = 1, the terms are ranked by their probabilities within the topic (the ‘regular’ method) while when λ = 0, the terms are ranked only by their lift. The interface allows to adjust the value of λ between 0 and 1.
+  Relevance is denoted by λ, the weight assigned to the probability of a term in a topic relative to its lift. When λ = 1, the terms are ranked by their probabilities within the topic (the ‘regular’ method) while when λ = 0, the terms are ranked only by their lift. The interface allows to adjust the value of λ between 0 and 1.
   </p>
   <p>
   For more details about topics' visualization, please see this paper, <a href="https://nlp.stanford.edu/events/illvi2014/papers/sievert-illvi2014.pdf">LDAvis: A method for visualizing and interpreting topics</a>.
