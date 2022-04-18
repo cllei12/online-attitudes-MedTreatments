@@ -118,7 +118,7 @@ We attempted to answer these questions through the following methods:
   - How many users mention a location
   - Histogram of locations by user
 
-- Predicting gender from comments (Michael)
+<!-- - Predicting gender from comments (Michael) -->
 
 ## Results
 
