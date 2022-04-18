@@ -51,7 +51,6 @@ We set out to answer the following questions:
 We attempted to answer these questions through the following methods:
 
 - Creating a histogram of users commenting on multiple posts (Jae)
-
   -	Using matplotlib to represent the frequency of usernames present in multiple Reddit submissions.
 
 - Sentiment analysis through the years (Jae)
@@ -72,7 +71,7 @@ We attempted to answer these questions through the following methods:
 - Locations in comments using Named Entity Recognition (Sanjana)
   - How many users mention a location
   - Histogram of locations by user
-  
+
 - Predicting gender from comments (Michael)
 
 ## Results
@@ -114,7 +113,7 @@ We drew histogram of users commenting in multiple Reddit submissions.
 
 ### Topic Model
 
-#### Text Preprocessing
+**Text Preprocessing**
 
 As part of preprocessing, we will:
 
@@ -160,7 +159,7 @@ As part of preprocessing, we will:
   The output of topic model will show that bigrams indeed improved our model to generate better topics. For instance, some topics contains bigrams `birth_control` and `male_birth`.  
   </p>
 
-  <h5>Bag-of-words</h5>
+  <h4>Bag-of-words</h4>
 
   <p>
   Bag-of-words model is an approach to represent a document as a vector. Under the bag-of-words model each document is represented by a vector containing the frequency counts of each word in the dictionary.
