@@ -21,7 +21,7 @@ description: USC CKIDS Datafest 2022
 
 **Source of Data:**
 - The data was collected by searching for relevant queries such as `male birth control` on Google, with the filter `site:reddit.com`.
-- Around **74** posts over **10** years were identified, and the data was exported using [PRAW](https://praw.readthedocs.io/en/stable/_).
+- Around **74** posts over **12** years were identified, and the data was exported using [PRAW](https://praw.readthedocs.io/en/stable/_).
 - The data consists of the submissions with the comments in it. Also, the user history of the commenters was downloaded.
 
 **Data files**
