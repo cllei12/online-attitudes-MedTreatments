@@ -6,6 +6,8 @@ description: USC CKIDS Datafest 2022
 
 ## Motivation
 
+Novel, or hypothesized medical treatments, such as COVID-19 vaccines and male contraception, are regularly discussed on social media. For example, on the AskReddit subreddit, questions of the form “”Would you take [x] if it existed?”” Aside from willingness to use these novel treatments, the answers to these questions contain important clues to peoples' latent concerns and barriers to adoption of novel medications. Understanding them can provide crucial information about how to introduce, communicate, and counsel about new medications when they come to market. 
+
 - Novel medical treatments are regularly discussed in social media
 - Analyzing this data will help us understand:
   - Concerns about the treatment
@@ -47,7 +49,11 @@ We attempted to answer these questions through the following methods:
 - Creating a histogram of users commenting on multiple posts (Jae)
 - Sentiment analysis through the years (Jae)
 - Topic model of comments (Lei)
-  - 5, 10, 20 topics
+
+  Topic Models, in a nutshell, are a type of statistical language models used for uncovering hidden structure in a collection of texts, which is used to classify text in a document to a particular topic.
+
+  Tools: `nltk` and `gensim`
+
 - Timeline (Sanjana)
   - Users posts by year
   - Comments in submissions by year
@@ -59,7 +65,6 @@ We attempted to answer these questions through the following methods:
 ## Results
 
 ### Data Exploration
-
 
 **Number of posts by subreddits** <br>
 ![Number of posts by subreddits](images/data-exploration/posts_by_subreddit.png)
@@ -82,9 +87,83 @@ We attempted to answer these questions through the following methods:
 
 ### Topic Model
 
-Topic modeling is a method for unsupervised classification of documents, similar to clustering on numeric data, which finds some natural groups of items (topics).
+#### Text Preprocessing
+
+As part of preprocessing, we will:
+
+- Tokenize documents (split the documents into tokens) and remove noise. 
+- Lemmatize the tokens. `nltk.stem.wordnet.WordNetLemmatizer`
+- Compute bigrams. `gensim.models.Phrases`
+- Compute a bag-of-words representation of the data. `gensim.corpora.Dictionary`
+
+
+<details>
+  <summary>Click to expand for more details on text preprocessing</summary>
+
+  **Tokenize and Remove Noise**
+
+  First, we tokenized the text using the tokenizer `gensim.utils.tokenize()` from `Gensim`. We removed the following tokens or comments as they don’t tend to be useful, and the comments contain a lot of them.
+
+  - stopwords: `gensim.parsing.preprocessing.STOPWORDS`
+  - single character tokens and numeric tokens 
+  - URLs: regular expression `r'http\S+'`
+  - common and rare words: filter out words that occur less than 5 documents, or more than 30% of the documents.
+  - [deleted] comments
+
+  **Lemmatize the Tokens**
+
+  We found some words with the same meaning could occur in one topic, especially gender words. For example, our topic model could generate a topic containing `female`, `women`, and `woman` at the same time. Gender words are important for our model because we are studying topics like birth control, but words with the same meaning could appear in a topic, which will harm the informativeness of our topic model.  
+
+  We use the WordNet lemmatizer from `NLTK`. A lemmatizer could produce more readable words and help our topic model generate more informative topics. This is very desirable in topic modeling.
+
+  **Bigrams**
+
+  We find bigrams in the documents(comments). Bigrams are sets of two adjacent words. Using bigrams we can get phrases like "birth_control" in our output (spaces are replaced with underscores); without bigrams we would only get "birth" and "control".
+
+  Then, add bigrams into our corpus, because we would like to keep the words "birth" and "control" as well as the bigram "birth_control". The following block shows part of phrases found by the bigram model
+
+  > ['fda_approval', 'lasts_years', 'test_subjects', 'sperm_count', 'birth_control', 'family_planning', 'tl_dr', 'reproductive_organs', 'shoot_blanks', 'bullet_proof', 'proof_vest', 'sex_drive', 'paying_child', 'child_support', 'hell_yes', 'female_birth', 'protect_stds', 'male_birth', 'proven_safe', 'birth_controls', 'shooting_blanks', 'approved_fda', 'want_kids', 'hormonal_birth', 'use_condoms', 'shoot_bulletproof', ...]
+
+  The output of topic model will show that bigrams indeed improved our model to generate better topics. For instance, some topics contains bigrams `birth_control` and `male_birth`.  
+
+  **Bag-of-words**
+
+  Bag-of-words model is an approach to represent a document as a vector. Under the bag-of-words model each document is represented by a vector containing the frequency counts of each word in the dictionary.
+
+  For example, assume we have a dictionary containing the words `['coffee', 'milk', 'sugar', 'spoon']`. A document consisting of the string "coffee milk coffee" would then be represented by the vector `[2, 1, 0, 0]`. One of the main properties of the bag-of-words model is that it completely ignores the order of the tokens in the document that is encoded, which is where the name bag-of-words comes from.
+
+  Here, we created a dictionary representation of the documents with `gensim.corpora.Dictionary` and `doc2bow()` method could create a corpus as the input of our topic model. 
+
+</details>
+
+**Topic Model Training**
+
+Our topic model is based on Latent Dirichlet allocation (LDA). LDA is a generative statistical model that allows sets of observations to be explained by unobserved groups that explain why some parts of the data are similar.
+
+Hyperparameter tuning shows the LDA model with 8 topics perform best. Hence, we used `gensim.models.Lda` to train a LDA model with 8 topics where each topic is a combination of keywords, and each keyword contributes a certain weightage to the topic. 
+
+<details>
+  <summary>Click to see the details on hyperparameter tuning</summary>
+
+  We are ready to train the LDA model. We will first discuss how to set some of the training parameters.
+
+  First of all, the elephant in the room: how many topics do we need? Let’s perform a series of sensitivity tests to help determine the following model hyperparameters
+
+  - Number of Topics $K$
+  - Dirichlet hyperparameter $\alpha$: Document-Topic Density
+  - Dirichlet hyperparameter $\beta$: Word-Topic Density
+
+  We’ll perform these tests in sequence, one parameter at a time by keeping others constant and run them over the two different validation corpus sets. We'll use topic coherence, `C_v`, as our choice of metric for performance comparison. We found the default setting, `alpha='symmetric', \beta='auto'`, perform best, so we will keep this setting to explore the optimal number of topics. 
+
+  Pick the model that gave the highest `C_v`. In this case, we picked $K=8$ with highest average topic coherence 0.6425.
+
+  ![hyperparameter tuning](images/topic-model/c_v_%5B'symmetric'%5D_%5B'auto'%5D.png)
+
+</details>
 
 **Output of Topic Model**
+
+Then, let's explore the 8 topics generated by our topic models. The following cell show combinations of keywords and the weightage of keywords for each topic. 
 
 ```
 Topic 1: 0.057*"female" + 0.034*"pill" + 0.029*"male" + 0.023*"effect" + 0.021*"birth_control" + 0.011*"think" + 0.009*"want" + 0.009*"taking" + 0.008*"control" + 0.007*"like"
@@ -105,6 +184,24 @@ Topic 8: 0.048*"vasectomy" + 0.014*"procedure" + 0.012*"reversible" + 0.009*"vas
 ```
 
 **Topic Model Visualization**
+
+The above results are hard to read, so we created interactive visualization with [`pyLDAvis`](https://pyldavis.readthedocs.io/en/latest/readme.html) package to interpret the topics. The interactive graph provides:
+
+- a left panel that depicts a global view of the model (how prevalent each topic is and how topics relate to each other);
+- a right panel containing a bar chart – the bars represent the terms that are most useful in interpreting the topic currently selected (what the meaning of each topic is).
+
+<details>
+  <summary>Click to expand for more details on topics' visualization</summary>
+
+  On the left, the topics are plotted as circles, whose centers are defined by the computed distance between topics (projected into 2 dimensions). The prevalence of each topic is indicated by the circle’s area. On the right, two juxtaposed bars showing the topic-specific frequency of each term (in red) and the corpus-wide frequency (in blueish gray). When no topic is selected, the right panel displays the top 30 most salient terms for the dataset.
+
+  Relevance is denoted by $\lambda$, the weight assigned to the probability of a term in a topic relative to its lift. When λ = 1, the terms are ranked by their probabilities within the topic (the ‘regular’ method) while when λ = 0, the terms are ranked only by their lift. The interface allows to adjust the value of λ between 0 and 1.
+
+  For more details about topics' visualization, please see this paper, [LDAvis: A method for visualizing and interpreting topics](https://nlp.stanford.edu/events/illvi2014/papers/sievert-illvi2014.pdf).
+
+</details>
+
+For instance, if we choose topic 1 on the right panel, we can see the top most relevant terms for Topic 1 contains, female, pill, male, effect, birth_control, etc. And if we choose the term "pill", the right panel will show the conditional topic distribution given the term "pill". Obviously, "pill" is mentioned more in topic 1 than other topics.
 
 <iframe id="lda_vis" 
 	title="Topic Model Visualization" 
