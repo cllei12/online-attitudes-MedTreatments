@@ -243,7 +243,7 @@ The above results are hard to read, so we created interactive visualization with
 
 </details>
 
-For instance, if we choose topic 1 on the right panel, we can see the top most relevant terms for Topic 1 contains, female, pill, male, effect, birth_control, etc. And if we choose the term "pill", the right panel will show the conditional topic distribution given the term "pill". Obviously, "pill" is mentioned more in topic 1 than other topics.
+For instance, if we choose topic 1 on the left panel, we can see the top most relevant terms for Topic 1 contains, female, pill, male, effect, birth_control, etc. And if we choose the term "pill", the right panel will show the conditional topic distribution given the term "pill". Obviously, "pill" is mentioned more in topic 1 than other topics.
 
 <iframe id="lda_vis" 
 	title="Topic Model Visualization" 
