@@ -109,7 +109,7 @@ Topic 8: 0.048*"vasectomy" + 0.014*"procedure" + 0.012*"reversible" + 0.009*"vas
 <iframe id="lda_vis" 
 	title="Topic Model Visualization" 
 	width="100%" height="700px" scrolling="yes" frameborder="0"
-	src="lda_8.html">
+	src="assets/html/lda_8.html">
 </iframe>
 
 **Location mentions**
@@ -121,7 +121,7 @@ Topic 8: 0.048*"vasectomy" + 0.014*"procedure" + 0.012*"reversible" + 0.009*"vas
 <iframe id="usagraph" 
 	title="State Mentions" 
 	width="100%" height="700px" scrolling="yes" frameborder="0"
-	src="usagraph.html">
+	src="assets/html/usagraph.html">
 </iframe>
 
 **Top word used in the most-mentioned US states**
