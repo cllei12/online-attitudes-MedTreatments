@@ -54,8 +54,7 @@ We attempted to answer these questions through the following methods:
 - Creating a histogram of users commenting on multiple posts (Jae)
   
   -	Represent the frequency of usernames present in multiple Reddit submissions.
-  
-    <details>
+  <details>
     <summary><u style="color:blue">Click to expand for more details on histogram</u></summary>
     <h4>Histogram of users commenting in multiple Reddit submissions.</h4>
     <p>
@@ -74,8 +73,7 @@ We attempted to answer these questions through the following methods:
   -	Calculate the overall sentiment of each Reddit submission by analyzing all comments within the submission. 
   - Depict words most occur in each respective sentiment, negative and positive, using Word Cloud. 
   -	Visualize sentiment scores for all Reddit submissions to represent sentiment trend
-  
-    <details>
+  <details>
     <summary><u style="color:blue">Click to expand for more details on histogram and sentiment analysis</u></summary>
     <p>
     <h4>Sentiment Analysis</h4>
@@ -114,7 +112,6 @@ We attempted to answer these questions through the following methods:
 - Topic model of comments (Lei)
 
   - Discover the abstract topics that frequently occur in Reddit comments.
-    
     <details>
       <summary>
       <u style="color:blue">Click to expand for more details on topic model</u>
@@ -342,7 +339,7 @@ Then, let's interpret the output of our topic model. We tried to give an interpr
 - Effect of testosterone for male
 - IUD pain long term
 - Study of male birth control
-- Vasectomy reversal surgery, and vasalgel a new male reversible contraceptive.
+- Vasectomy reversal surgery, and vasalgel (a new male reversible contraceptive).
 
 **Location mentions**
 
@@ -376,4 +373,9 @@ Box plot and trend line for overall sentiment over time.
 ### Timeline 
 
 ## Conclusion
+
+- The histograms in data exploration shows that male contraceptives has been a topic of interest in the recent years compared to the early 2010's with the greatest number of posts and comments in 2021. Still, only a small number of users participate in multiple number of submissions with the greater majority of users were only in one male contraceptive Reddit post.
+- Based on our analysis, a majority of the comments were identified to originate from the United States, especially states with major metropolitan cities like California, Texas, Florida, and New York.
+- The sentiment analysis demonstrates a slight positive to neutral sentiment towards male contraceptives. Furthermore, the sentiment score has remained unchanged throughout the 12 years time frame. The stable sentiment is likely due to the absence of a male contraceptive product.
+- The generated topics regarding contraceptives are related to possible side effects, and family planning, and new male birth control methods.
 
