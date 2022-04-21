@@ -4,6 +4,7 @@ title: Characterizing Online Attitudes, Expectations, and Concerns about Novel M
 description: USC CKIDS Datafest 2022
 ---
 
+
 ## Motivation
 
 <!-- Novel, or hypothesized medical treatments, such as COVID-19 vaccines and male contraception, are regularly discussed on social media. For example, on the AskReddit subreddit, questions of the form “”Would you take [x] if it existed?”” Aside from willingness to use these novel treatments, the answers to these questions contain important clues to peoples' latent concerns and barriers to adoption of novel medications. Understanding them can provide crucial information about how to introduce, communicate, and counsel about new medications when they come to market.  -->
@@ -32,7 +33,6 @@ description: USC CKIDS Datafest 2022
 - users: **21,627** user history of those who commented on the submissions (in .pkl files)
 - Out of **41,792** comments read, **5179** comments had deleted user information. 
 - **22,099** unique users were found from all submissions.
-
 
 
 ## Problem
@@ -88,11 +88,15 @@ We attempted to answer these questions through the following methods:
 
 Reddit is a collection of subreddits, where each subreddit is a forum dedicated to a specific topic. From the data we collected, we observed that the highest number of submissions belonged to [r/AskReddit](https://www.reddit.com/r/AskReddit/), a popular subreddit for Redditors (users of Reddit) to ask and answer any kind of question. [r/Futurology](https://www.reddit.com/r/Futurology/), a subreddit where people speculate about humanity, technology, and civilization, came in second.
 
-**Number of posts by year** <br>
-![Number of posts by year](images/data-exploration/posts_by_year.png)
+**Number of Submissions by Year** <br>
+![Number of Submissions by Year](images/data-exploration/posts_by_year.png)
+
+We observed that the number of submissions (posts on Reddit) increased over the years. This could be an artefact of collecting search results, or there could be more discourse about male contraception due to recent research advancements.
 
 **Number of comments by year** <br>
 ![Number of comments by year](images/data-exploration/comments_by_year.png)
+
+The number of comments under each submission also follows a similar trend. Interesting to note is the dip in 2020, right before the sharp rise in 2021.
 
 **Users commenting in multiple posts**
 
@@ -102,6 +106,8 @@ We drew histogram of users commenting in multiple Reddit submissions.
 -	643 Reddit usernames commented in two Reddit submissions.
 -	61 Reddit usernames were found in three Reddit submissions, following with 8 Reddit usernames in four Reddit submissions, and 4 Reddit usernames in five Reddit submissions. 
 -	 2 usernames commented in the six submissions, the maximum number of different Reddit submissions. 
+
+<img src="images/data-exploration/Histogram.png" class="center" alt="histogram" style="zoom:50%;" />
 
 <details>
       <summary><u style="color:blue">Click to expand for more details on histogram</u></summary>
@@ -117,7 +123,6 @@ We drew histogram of users commenting in multiple Reddit submissions.
       </ul>
 </details>
 
-<img src="images/data-exploration/Histogram.png" class="center" alt="histogram" style="zoom:50%;" />
 <style>
 .center {
   display: block;
@@ -133,6 +138,9 @@ We drew histogram of users commenting in multiple Reddit submissions.
 -	From the data collected, the figure demonstrates a greater number of Reddit submission with an overall positive sentiment toward male contraception. 
 -	In the trendline t1=0.0762 and t73 = 0.0686 with a delta of -0.0076 from the first Reddit submission and the last Reddit submission. 
 -	Based on the data collected, it is inconclusive to determine if sentiment change for male contraception. 
+
+<img src="images/data-exploration/negative_wordcloud.png" alt="histogram" style="zoom:32%;" /> <img src="images/data-exploration/positive_wordcloud.png" alt="histogram" style="zoom:32%;" /> 
+![histogram](images/data-exploration/Sentiment_scores.png)
 
 <details>
       <summary><u style="color:blue">Click to expand for more details on sentiment analysis</u></summary>
@@ -169,9 +177,6 @@ We drew histogram of users commenting in multiple Reddit submissions.
       </ul>
       </p>
     </details>
-
-<img src="images/data-exploration/negative_wordcloud.png" alt="histogram" style="zoom:32%;" /> <img src="images/data-exploration/positive_wordcloud.png" alt="histogram" style="zoom:32%;" /> 
-![histogram](images/data-exploration/Sentiment_scores.png)
 
 ### Topic Model
 
@@ -355,4 +360,3 @@ Box plot and trend line for overall sentiment over time.
 - The sentiment analysis demonstrates a slight positive to neutral sentiment towards male contraceptives. Furthermore, the sentiment score has remained stable throughout the 12 years time frame, which is likely due to the absence of a male contraceptive product.
 
 - The generated topics regarding contraceptives are related to possible side effects, and family planning, and new male contraceptive product.
-
