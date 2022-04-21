@@ -193,7 +193,7 @@ We drew histogram of users commenting in multiple Reddit submissions.
 -	In the trendline t1=0.0762 and t73 = 0.0686 with a delta of -0.0076 from the first Reddit submission and the last Reddit submission. 
 -	Based on the data collected, it is inconclusive to determine if sentiment change for male contraception. 
 
-<img src="images/data-exploration/negative_wordcloud.png" alt="histogram" style="zoom:26%;" /> <img src="images/data-exploration/positive_wordcloud.png" alt="histogram" style="zoom:28%;" /> 
+<img src="images/data-exploration/negative_wordcloud.png" alt="histogram" style="zoom:40%;" /> <img src="images/data-exploration/positive_wordcloud.png" alt="histogram" style="zoom:40%;" /> 
 ![histogram](images/data-exploration/Sentiment_scores.png)
 
 ### Topic Model
