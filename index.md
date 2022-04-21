@@ -70,25 +70,31 @@ We attempted to answer these questions through the following methods:
     <li> Usernames with multiple comments were included only once, and deleted usernames were excluded.</li>
     <li> From the list of unique usernames for all Reddit submissions, the frequency of each username presents in all submissions were calculated. </li>
     <li> Using matplotlib, a histogram was plotted to represent the frequency of usernames commenting in multiple Reddit submissions. </li>
+    </ul>
   
     <h4>Sentiment Analysis</h4>
-  
+
+    <ul>
     <li> Performed sentiment analysis of all comments in each Reddit submission by using (Valence Aware Dictionary and sEntiment Reasoner) VADER. </li>
   
     <li> A list was created to store the positive, negative, neutral and compound sentiment score for all comments of the Reddit submission.</li>
   
     <li> Comments with a compound sentiment scores greater than or equal to 0.05 was considered as positive sentiments, and compound sentiment scores less than or equal to -0.05 was considered as negative sentiments. Neutral sentiment ranged a compound sentiment scores between -0.05 and 0.05.</li>
+    </ul>
   
     <h4>Word Cloud</h4>
-  
+
+    <ul>
     <li> Lists of comments with negative and positive sentiment were created, selecting comments with compound sentiment scores less than -0.9 and greater than 0.9 for their respective lists. </li>
   
     <li> All comments from both negative sentiments and positive sentiments were normalized by removing special characters, numbers and stopwords using (Natural Language Toolkit) NLTK. </li>
   
     <li> The resulting positive sentiment list of words and negative sentiment list of words were used to create their respective word cloud, using WordCloud. </li>
+    </ul>
   
     <h4>Sentiment score Boxplot of all Reddit Submission</h4>
   
+    <ul>
     <li> The lists of compound sentiment scores of all Reddit submissions were organized in chronological order.</li>
   
     <li> Seaborn was used to create a graphical representation of the result of the sentiment analysis, in chronological order in the x-axis and the sentiment score in the y-axis.</li>
@@ -143,7 +149,14 @@ We drew histogram of users commenting in multiple Reddit submissions.
 -	61 Reddit usernames were found in three Reddit submissions, following with 8 Reddit usernames in four Reddit submissions, and 4 Reddit usernames in five Reddit submissions. 
 -	 2 usernames commented in the six submissions, the maximum number of different Reddit submissions. 
 
-<img src="images/data-exploration/Histogram.png" alt="histogram" style="zoom:50%;" />
+<img src="images/data-exploration/Histogram.png" class="center" alt="histogram" style="zoom:50%;" />
+<style>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
 
 **Sentiment Analysis**
 
@@ -170,14 +183,16 @@ As part of preprocessing, we will the following natural language processing tech
   <summary><u style="color:blue">Click to expand for more details on text preprocessing</u></summary>
 
   <h4>Tokenize and Remove Noise</h4>
-
+  <p>
   First, we tokenized the text (split the documents into tokens) using the tokenizer `gensim.utils.tokenize()` from Gensim. We removed the following tokens or comments as they don't tend to be useful, and the comments contain a lot of them.
-
-  - stopwords: gensim.parsing.preprocessing.STOPWORDS
-  - single character tokens and numeric tokens 
-  - URLs: regular expression, `r'http\S+'`
-  - common and rare words: filter out words that occur less than 5 documents, or more than 30% of the documents.
-  - [deleted] comments
+  <ul>
+  <li> stopwords: gensim.parsing.preprocessing.STOPWORDS</li>
+  <li> single character tokens and numeric tokens </li>
+  <li> URLs: regular expression, `r'http\S+'`</li>
+  <li> common and rare words: filter out words that occur less than 5 documents, or more than 30% of the documents.</li>
+  <li> [deleted] comments</li>
+  </ul>
+  </p>
 
   <h4>Lemmatize the Tokens</h4>
 
