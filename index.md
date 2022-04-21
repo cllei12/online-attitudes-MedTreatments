@@ -309,8 +309,6 @@ Then, let's interpret the output of our topic model. We tried to give an interpr
 
 **Location mentions**
 
-![Location mentions](images/data-exploration/location_mentions.png)
-
 **Number of times US states mentioned in comments**
 
 <iframe id="usagraph" 
