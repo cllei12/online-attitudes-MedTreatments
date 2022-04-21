@@ -53,96 +53,14 @@ We attempted to answer these questions through the following methods:
 
 - Creating a histogram of users commenting on multiple posts (Jae)
   -	Represent the frequency of usernames present in multiple Reddit submissions.
-    <details>
-      <summary><u style="color:blue">Click to expand for more details on histogram</u></summary>
-      <h4>Histogram of users commenting in multiple Reddit submissions.</h4>
-      <p>
-        Using matplotlib to represent the frequency of usernames present in multiple Reddit submissions.
-      </p>
-      <ul>
-      <li> Created a list of usernames found in the comment section of each submission. </li>
-      <li> Usernames with multiple comments were included only once, and deleted usernames were excluded.</li>
-      <li> From the list of unique usernames for all Reddit submissions, the frequency of each username presents in all submissions were calculated. </li>
-      <li> Using matplotlib, a histogram was plotted to represent the frequency of usernames commenting in multiple Reddit submissions. </li>
-      </ul>
-    </details>
   
 - Sentiment analysis through the years (Jae)
   -	Calculate the overall sentiment of each Reddit submission.
   - Depict words most occur in each negative and positive sentiment.
   -	Visualize sentiment scores for all Reddit submissions to represent sentiment trend.
-    <details>
-      <summary><u style="color:blue">Click to expand for more details on histogram and sentiment analysis</u></summary>
-      <p>
-      <h4>Sentiment Analysis</h4>
-      <p>
-      Using <a href="https://github.com/cjhutto/vaderSentiment">VADER sentiment analysis</a>, the overall sentiment of each Reddit submissions was calculated by analyzing all comments within the submission. 
-      </p>
-      <ul>
-      <li> Performed sentiment analysis of all comments in each Reddit submission by using (Valence Aware Dictionary and sEntiment Reasoner) VADER. </li>
-      <li> A list was created to store the positive, negative, neutral and compound sentiment score for all comments of the Reddit submission.</li>
-      <li> Comments with a compound sentiment scores greater than or equal to 0.05 was considered as positive sentiments, and compound sentiment scores less than or equal to -0.05 was considered as negative sentiments. Neutral sentiment ranged a compound sentiment scores between -0.05 and 0.05.</li>
-      </ul>
-      <h4>Word Cloud</h4>
-      <p>
-      Using WordCloud, comments with negative and positive sentiments were selected to create a word cloud to depicts words most found in each respective sentiment. 
-      </p>
-      <ul>
-      <li> Lists of comments with negative and positive sentiment were created, selecting comments with compound sentiment scores less than -0.9 and greater than 0.9 for their respective lists. </li>
-      <li> All comments from both negative sentiments and positive sentiments were normalized by removing special characters, numbers and stopwords using (Natural Language Toolkit) NLTK. </li>
-      <li> The resulting positive sentiment list of words and negative sentiment list of words were used to create their respective word cloud, using WordCloud. </li>
-      </ul>
-      <h4>Sentiment score Boxplot of all Reddit Submission</h4>
-      <p>
-      Using seaborn, boxplots of sentiment scores for all Reddit submissions was created using boxplot, stripplot, and pointplot, to represent all data points and a line graph of all means. A trendline using all means was also included in the figure. 
-      </p>
-      <ul>
-      <li> The lists of compound sentiment scores of all Reddit submissions were organized in chronological order.</li>
-      <li> Seaborn was used to create a graphical representation of the result of the sentiment analysis, in chronological order in the x-axis and the sentiment score in the y-axis.</li>
-      <li> Stripplot was used to plot all compound sentiment scores of all comments in each Reddit submission.</li>
-      <li> Boxplot was used to create a box plot of each Reddit submission.</li>
-      <li>Pointplot was used to create a line graph of the mean sentiment for each Reddit submission. </li>
-      <li> A trendline of all mean scores was included using a numpy polyfit and poly1d.</li>
-      </ul>
-      </p>
-    </details>
 
 - Topic model of comments (Lei)
   - Discover the abstract topics that frequently occur in Reddit comments.
-    <details>
-      <summary>
-      <u style="color:blue">Click to expand for more details on topic model</u>
-      </summary>
-      <h4>Topic Model</h4>
-      <p>
-      Topic Models, in a nutshell, are a type of statistical language models used for uncovering hidden structure in a collection of texts, which is used to classify text in a document to a particular topic.
-      </p>
-      <p>
-      We will build an LDA model to discver the frequently mentioned topics in Reddit submissions, following these stesps
-      </p>
-      <h4>Text Preprocessing</h4>
-      <p>
-      We will use the following techniques to create a corpus for our topic model and to make the model more interpretable:
-      </p>
-      <ul>
-        <li> Tokenize documents and remove noise. </li>
-        <li> Lemmatize the tokens. </li>
-        <li> Compute bigrams. </li>
-        <li> Compute a bag-of-words representation of the data. </li>
-      </ul>
-      <h4>Model Training</h4>
-      <p>
-      Build a LDA topic model using `gensim.models.Lda`, and do hyperparameter tuning to find the optimal LDA model. 
-      </p>
-      <h4>Topic Visualization</h4>
-      <p>
-      Created an interactive graph with `pyLDAvis` package to provide an intuition of generated topics.
-      </p>
-      <h4>Topic Interpretation</h4>
-      <p>
-      Interpret the topics generated by our topic model. We tried to give an interpretation for each topic.
-      </p>
-      </details>
 
 - Timeline (Sanjana)
   - Users posts by year
@@ -176,6 +94,20 @@ We drew histogram of users commenting in multiple Reddit submissions.
 -	61 Reddit usernames were found in three Reddit submissions, following with 8 Reddit usernames in four Reddit submissions, and 4 Reddit usernames in five Reddit submissions. 
 -	 2 usernames commented in the six submissions, the maximum number of different Reddit submissions. 
 
+<details>
+      <summary><u style="color:blue">Click to expand for more details on histogram</u></summary>
+      <h4>Histogram of users commenting in multiple Reddit submissions.</h4>
+      <p>
+        Using matplotlib to represent the frequency of usernames present in multiple Reddit submissions.
+      </p>
+      <ul>
+      <li> Created a list of usernames found in the comment section of each submission. </li>
+      <li> Usernames with multiple comments were included only once, and deleted usernames were excluded.</li>
+      <li> From the list of unique usernames for all Reddit submissions, the frequency of each username presents in all submissions were calculated. </li>
+      <li> Using matplotlib, a histogram was plotted to represent the frequency of usernames commenting in multiple Reddit submissions. </li>
+      </ul>
+</details>
+
 <img src="images/data-exploration/Histogram.png" class="center" alt="histogram" style="zoom:50%;" />
 <style>
 .center {
@@ -192,6 +124,42 @@ We drew histogram of users commenting in multiple Reddit submissions.
 -	From the data collected, the figure demonstrates a greater number of Reddit submission with an overall positive sentiment toward male contraception. 
 -	In the trendline t1=0.0762 and t73 = 0.0686 with a delta of -0.0076 from the first Reddit submission and the last Reddit submission. 
 -	Based on the data collected, it is inconclusive to determine if sentiment change for male contraception. 
+
+<details>
+      <summary><u style="color:blue">Click to expand for more details on sentiment analysis</u></summary>
+      <p>
+      <h4>Sentiment Analysis</h4>
+      <p>
+      Using <a href="https://github.com/cjhutto/vaderSentiment">VADER sentiment analysis</a>, the overall sentiment of each Reddit submissions was calculated by analyzing all comments within the submission. 
+      </p>
+      <ul>
+      <li> Performed sentiment analysis of all comments in each Reddit submission by using (Valence Aware Dictionary and sEntiment Reasoner) VADER. </li>
+      <li> A list was created to store the positive, negative, neutral and compound sentiment score for all comments of the Reddit submission.</li>
+      <li> Comments with a compound sentiment scores greater than or equal to 0.05 was considered as positive sentiments, and compound sentiment scores less than or equal to -0.05 was considered as negative sentiments. Neutral sentiment ranged a compound sentiment scores between -0.05 and 0.05.</li>
+      </ul>
+      <h4>Word Cloud</h4>
+      <p>
+      Using WordCloud, comments with negative and positive sentiments were selected to create a word cloud to depicts words most found in each respective sentiment. 
+      </p>
+      <ul>
+      <li> Lists of comments with negative and positive sentiment were created, selecting comments with compound sentiment scores less than -0.9 and greater than 0.9 for their respective lists. </li>
+      <li> All comments from both negative sentiments and positive sentiments were normalized by removing special characters, numbers and stopwords using (Natural Language Toolkit) NLTK. </li>
+      <li> The resulting positive sentiment list of words and negative sentiment list of words were used to create their respective word cloud, using WordCloud. </li>
+      </ul>
+      <h4>Sentiment score Boxplot of all Reddit Submission</h4>
+      <p>
+      Using seaborn, boxplots of sentiment scores for all Reddit submissions was created using boxplot, stripplot, and pointplot, to represent all data points and a line graph of all means. A trendline using all means was also included in the figure. 
+      </p>
+      <ul>
+      <li> The lists of compound sentiment scores of all Reddit submissions were organized in chronological order.</li>
+      <li> Seaborn was used to create a graphical representation of the result of the sentiment analysis, in chronological order in the x-axis and the sentiment score in the y-axis.</li>
+      <li> Stripplot was used to plot all compound sentiment scores of all comments in each Reddit submission.</li>
+      <li> Boxplot was used to create a box plot of each Reddit submission.</li>
+      <li>Pointplot was used to create a line graph of the mean sentiment for each Reddit submission. </li>
+      <li> A trendline of all mean scores was included using a numpy polyfit and poly1d.</li>
+      </ul>
+      </p>
+    </details>
 
 <img src="images/data-exploration/negative_wordcloud.png" alt="histogram" style="zoom:32%;" /> <img src="images/data-exploration/positive_wordcloud.png" alt="histogram" style="zoom:32%;" /> 
 ![histogram](images/data-exploration/Sentiment_scores.png)
@@ -309,6 +277,7 @@ The above results are hard to read, so we created an interactive graph to interp
 	width="100%" height="600px" scrolling="yes" frameborder="0"
 	src="assets/html/lda_8.html">
 </iframe>
+
 For instance, if we choose topic 1 on the left panel, we can see the top most relevant terms for Topic 1 contains, female, pill, male, effect, birth_control, etc. And if we choose the term "pill", the right panel will show the conditional topic distribution given the term "pill". Obviously, "pill" is mentioned more in topic 1 than other topics.
 
 <details>
