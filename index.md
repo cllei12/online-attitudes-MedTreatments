@@ -148,9 +148,9 @@ California, Texas, New York, and Florida were the states with the most locations
 But if we consider the number of mentions per 100k residents, we see a shift in the map. The District of Columbia tops the list, followed by North Dakota and Montana. Following is a graph of the mentions per 100k residents scaled by a factor of 100.
 
 <iframe id="state_mentions_per_100k" 
-	title="State Mentions" 
+	title="State Mentions Per 100k Residents" 
 	width="100%" height="600px" scrolling="yes" frameborder="0"
-	src="assets/html/state_mentions.html">
+	src="assets/html/state_mentions_per_100k.html">
 </iframe>
 
 **Top word used in the most-mentioned US states**
@@ -173,7 +173,7 @@ Some notable words:
 -	In the trendline t1=0.0762 and t73 = 0.0686 with a delta of -0.0076 from the first Reddit submission and the last Reddit submission. 
 -	Based on the data collected, it is inconclusive to determine if sentiment change for male contraception. 
 
-<img src="images/data-exploration/negative_wordcloud.png" alt="histogram" style="zoom:32%;" /> <img src="images/data-exploration/positive_wordcloud.png" alt="histogram" style="zoom:32%;" /> 
+<img src="images/data-exploration/negative_wordcloud.png" alt="histogram" width="350" /> <img src="images/data-exploration/positive_wordcloud.png" alt="histogram" width="350" /> 
 ![histogram](images/data-exploration/Sentiment_scores.png)
 
 <details>
