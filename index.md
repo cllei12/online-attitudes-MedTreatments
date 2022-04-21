@@ -68,9 +68,9 @@ We attempted to answer these questions through the following methods:
     </details>
   
 - Sentiment analysis through the years (Jae)
-  -	Calculate the overall sentiment of each Reddit submission by analyzing all comments within the submission. 
-  - Depict words most occur in each respective sentiment, negative and positive, using Word Cloud. 
-  -	Visualize sentiment scores for all Reddit submissions to represent sentiment trend
+  -	Calculate the overall sentiment of each Reddit submission.
+  - Depict words most occur in each negative and positive sentiment.
+  -	Visualize sentiment scores for all Reddit submissions to represent sentiment trend.
     <details>
       <summary><u style="color:blue">Click to expand for more details on histogram and sentiment analysis</u></summary>
       <p>
