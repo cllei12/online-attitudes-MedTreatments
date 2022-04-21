@@ -74,7 +74,7 @@ We attempted to answer these questions through the following methods:
   - Depict words most occur in each negative and positive sentiment
   -	Visualize sentiment scores for all Reddit submissions to represent sentiment trend
 
-**Topic model of comments** (Lei)
+**Topic Model of Comments** (Lei)
   - Discover the abstract topics that frequently occur in Reddit comments
 
 <!-- - Predicting gender from comments (Michael) -->
@@ -131,7 +131,41 @@ We drew histogram of users commenting in multiple Reddit submissions.
 }
 </style>
 
-**Sentiment Analysis**
+**Location Mentions**
+
+**Number of Times US States Mentioned in Comments**
+
+<iframe id="state_mentions" 
+	title="State Mentions" 
+	width="100%" height="600px" scrolling="yes" frameborder="0"
+	src="assets/html/state_mentions.html">
+</iframe>
+
+We used [SpaCy](https://spacy.io/) to perform Named Entity Recognition (NER) on the comments. USA was the most-mentioned country, and India was second. We decided to focus our work on US locations. We used the [Nominatim](https://nominatim.org/) API to get the US state names for the locations, thus filtering out non-US mentions. We also manually eliminated words such as "anesthesia" that were incorrectly tagged as locations during the NER phase.
+
+California, Texas, New York, and Florida were the states with the most locations mentioned in comments.
+
+But if we consider the number of mentions per 100k residents, we see a shift in the map. The District of Columbia tops the list, followed by North Dakota and Montana. Following is a graph of the mentions per 100k residents scaled by a factor of 100.
+
+<iframe id="state_mentions_per_100k" 
+	title="State Mentions" 
+	width="100%" height="600px" scrolling="yes" frameborder="0"
+	src="assets/html/state_mentions.html">
+</iframe>
+
+**Top word used in the most-mentioned US states**
+
+The following pictures show the top words used in each state: California, Texas, New York, and Florida respectively.
+
+<img src="images/data-exploration/california_top_words.png" alt="California Top Words" width="400" /> <img src="images/data-exploration/texas_top_words.png" alt="Texas Top Words" width="400" /> <img src="images/data-exploration/new_york_top_words.png" alt="New York Top Words" width="400" /> <img src="images/data-exploration/florida_top_words.png" alt="Florida Top Words" width="400" />
+
+Some notable words:
+- "NCT03452111", [an identifier for a clinical trial](https://clinicaltrials.gov/ct2/show/NCT03452111) on gel-based male contraception, appears frequently which shows that people are paying attention to the research
+- "Herbal" was a frequently used word with New York location mentions, perhaps in reference to herbal oral male contraceptives, but further analysis is necessary to be sure
+- "Moral" is another interesting word appearance in Florida, and the comments will have to be analysed further to understand if there is any discussion around moral implications of contraceptives
+
+
+### Sentiment Analysis
 
 -	From the 74 Reddit submissions, one submission was excluded for the lack of comments, and 73 submissions were included in the sentiment analysis. 
 -	The first Reddit submission was dated February, 2010 and the last Reddit submission was dated November, 2021. 
@@ -177,6 +211,7 @@ We drew histogram of users commenting in multiple Reddit submissions.
       </ul>
       </p>
     </details>
+
 
 ### Topic Model
 
@@ -321,35 +356,6 @@ Then, let's interpret the output of our topic model. We tried to give an interpr
 - Study of male birth control
 - Vasectomy reversal surgery, and vasalgel (a new male reversible contraceptive).
 
-**Location mentions**
-
-**Number of times US states mentioned in comments**
-
-<iframe id="usagraph" 
-	title="State Mentions" 
-	width="100%" height="600px" scrolling="yes" frameborder="0"
-	src="assets/html/usagraph.html">
-</iframe>
-
-
-**Top word used in the most-mentioned US states**
-
-The following pictures are showing the top words used in Texas, California, New York and Florida.
-
-<img src="images/data-exploration/texas_top_words.png" alt="Number of posts by subreddits" style="zoom: 40%;" width="200" /> <img src="images/data-exploration/california_top_words.png" alt="Number of posts by year" style="zoom:40%;" width="200" />
-
-<img src="images/data-exploration/new_york_top_words.png" alt="Number of comments by year" style="zoom:35%;" /> <img src="images/data-exploration/florida_top_words.png" alt="Number of comments by year" style="zoom:35%;" width="200" />
-
-
-
-
-**Data exploration**
-Histogram of users commenting in more than one reddit submission
-Vader Sentiment analysis of comments for each submission
-Box plot and trend line for overall sentiment over time.
-
-
-### Timeline 
 
 ## Conclusion
 
