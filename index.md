@@ -28,47 +28,54 @@ description: USC CKIDS Datafest 2022
 
 **Data files**
 
-- submissions : 74 posts (in .pkl files)
-- users: 21627 user history of those who commented on the submissions (in .pkl files)
-- Out of 41,792 comments read, 5179 comments had deleted user information. 
-- 22,099 unique users were found from all submissions.
+- submissions : **74** posts (in .pkl files)
+- users: **21,627** user history of those who commented on the submissions (in .pkl files)
+- Out of **41,792** comments read, **5179** comments had deleted user information. 
+- **22,099** unique users were found from all submissions.
 
 
 
 ## Problem
 
-We set out to answer the following questions:
+We set out to answer the following questions, across four themes:
+
+**Timeline**
 - What years were users most engaged in the topic of male contraception?
-- What general topics can we identify in the discussions on Reddit?
-- What are the sentiments of the users when they write about male contraception?
 - Are there users who engaged with the topic of male birth control over multiple years?
-- Has their sentiment shifted or remained the same over the years?
+
+**Geography**
 - Do users mention specific locations?
 - What is the context around which users mention a location?
+
+**Sentiment**
+- What are the sentiments of the users when they write about male contraception?
+- Has their sentiment shifted or remained the same over the years?
+
+**Topic Modeling** 
+- What general topics can we identify in an unsupervised manner from the discussions on Reddit?
 
 
 ## Methods
 
 We attempted to answer these questions through the following methods:
 
-- Creating a histogram of users commenting on multiple posts (Jae)
-  -	Represent the frequency of usernames present in multiple Reddit submissions.
-  
-- Sentiment analysis through the years (Jae)
-  -	Calculate the overall sentiment of each Reddit submission.
-  - Depict words most occur in each negative and positive sentiment.
-  -	Visualize sentiment scores for all Reddit submissions to represent sentiment trend.
+**Data Exploration and Visualization** (Sanjana and Jae)
+- Create histograms:
+  - Submissions by subreddit
+  - Submissions by year
+  - Comments by year
+  - Submissions by users
+- Visualize geographic data:
+  - Number of mentions per US state
+  - Number of mentions per US state per 100,000 residents
 
-- Topic model of comments (Lei)
-  - Discover the abstract topics that frequently occur in Reddit comments.
+**Sentiment Analysis** (Jae)
+  -	Calculate the overall sentiment of each Reddit submission
+  - Depict words most occur in each negative and positive sentiment
+  -	Visualize sentiment scores for all Reddit submissions to represent sentiment trend
 
-- Timeline (Sanjana)
-  - Users posts by year
-  - Comments in submissions by year
-
-- Locations in comments using Named Entity Recognition (Sanjana)
-  - How many users mention a location
-  - Histogram of locations by user
+**Topic model of comments** (Lei)
+  - Discover the abstract topics that frequently occur in Reddit comments
 
 <!-- - Predicting gender from comments (Michael) -->
 
@@ -76,8 +83,10 @@ We attempted to answer these questions through the following methods:
 
 ### Data Exploration
 
-**Number of posts by subreddits** <br>
-![Number of posts by subreddits](images/data-exploration/posts_by_subreddit.png)
+**Number of Submissions by Subreddit** <br>
+![Number of Submissions by Subreddit](images/data-exploration/posts_by_subreddit.png)
+
+Reddit is a collection of subreddits, where each subreddit is a forum dedicated to a specific topic. From the data we collected, we observed that the highest number of submissions belonged to [r/AskReddit](https://www.reddit.com/r/AskReddit/), a popular subreddit for Redditors (users of Reddit) to ask and answer any kind of question. [r/Futurology](https://www.reddit.com/r/Futurology/), a subreddit where people speculate about humanity, technology, and civilization, came in second.
 
 **Number of posts by year** <br>
 ![Number of posts by year](images/data-exploration/posts_by_year.png)
@@ -322,9 +331,9 @@ Then, let's interpret the output of our topic model. We tried to give an interpr
 
 The following pictures are showing the top words used in Texas, California, New York and Florida.
 
-<img src="images/data-exploration/texas_top_words.png" alt="Number of posts by subreddits" style="zoom: 40%;" /> <img src="images/data-exploration/california_top_words.png" alt="Number of posts by year" style="zoom:40%;" />
+<img src="images/data-exploration/texas_top_words.png" alt="Number of posts by subreddits" style="zoom: 40%;" width="200" /> <img src="images/data-exploration/california_top_words.png" alt="Number of posts by year" style="zoom:40%;" width="200" />
 
-<img src="images/data-exploration/new_york_top_words.png" alt="Number of comments by year" style="zoom:35%;" /> <img src="images/data-exploration/florida_top_words.png" alt="Number of comments by year" style="zoom:35%;" />
+<img src="images/data-exploration/new_york_top_words.png" alt="Number of comments by year" style="zoom:35%;" /> <img src="images/data-exploration/florida_top_words.png" alt="Number of comments by year" style="zoom:35%;" width="200" />
 
 
 
