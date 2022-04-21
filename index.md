@@ -27,6 +27,7 @@ description: USC CKIDS Datafest 2022
 - The data consists of the submissions with the comments in it. Also, the user history of the commenters was downloaded.
 
 **Data files**
+
 - submissions : 74 posts (in .pkl files)
 - users: 21627 user history of those who commented on the submissions (in .pkl files)
 - Out of 41,792 comments read, 5179 comments had deleted user information. 
@@ -58,50 +59,50 @@ We attempted to answer these questions through the following methods:
   - Using WordCloud, comments with negative and positive sentiments were selected to create a word cloud to depicts words most found in each respective sentiment. 
   -	Using seaborn, boxplots of sentiment scores for all Reddit submissions was created using boxplot, stripplot, and pointplot, to represent all data points and a line graph of all means. A trendline using all means was also included in the figure. 
 
-<details>
-  <summary>Click to expand for more details on histogram and sentiment analysis</summary>
-  <p>
-  Histogram of users commenting in multiple Reddit submissions. 
+  <details>
+    <summary><u style="color:blue">Click to expand for more details on histogram and sentiment analysis</u></summary>
+    <p>
 
-  -	Created a list of usernames found in the comment section of each submission. 
+    <h4>Histogram of users commenting in multiple Reddit submissions.</h4>
 
-  -	Usernames with multiple comments were included only once, and deleted usernames were excluded.
-
-  -	From the list of unique usernames for all Reddit submissions, the frequency of each username presents in all submissions were calculated. 
-
-  -	Using matplotlib, a histogram was plotted to represent the frequency of usernames commenting in multiple Reddit submissions. 
-
-  Sentiment Analysis
-
-  -	Performed sentiment analysis of all comments in each Reddit submission by using (Valence Aware Dictionary and sEntiment Reasoner) VADER. 
-
-  -	A list was created to store the positive, negative, neutral and compound sentiment score for all comments of the Reddit submission.
-
-  -	Comments with a compound sentiment scores greater than or equal to 0.05 was considered as positive sentiments, and compound sentiment scores less than or equal to -0.05 was considered as negative sentiments. Neutral sentiment ranged a compound sentiment scores between -0.05 and 0.05.
-
-  Word Cloud
-
-  -	Lists of comments with negative and positive sentiment were created, selecting comments with compound sentiment scores less than -0.9 and greater than 0.9 for their respective lists. 
-
-  -	All comments from both negative sentiments and positive sentiments were normalized by removing special characters, numbers and stopwords using (Natural Language Toolkit) NLTK. 
-
-  -	The resulting positive sentiment list of words and negative sentiment list of words were used to create their respective word cloud, using WordCloud. 
-
-  Sentiment score Boxplot of all Reddit Submission
-
-  -	The lists of compound sentiment scores of all Reddit submissions were organized in chronological order.
-
-  -	Seaborn was used to create a graphical representation of the result of the sentiment analysis, in chronological order in the x-axis and the sentiment score in the y-axis.
-
-  -	Stripplot was used to plot all compound sentiment scores of all comments in each Reddit submission.
-
-  -	Boxplot was used to create a box plot of each Reddit submission.
-
-  -	Pointplot was used to create a line graph of the mean sentiment for each Reddit submission. 
-
-  -	A trendline of all mean scores was included using a numpy polyfit and poly1d.
-  </p>
-</details>
+    <ul>
+    <li> Created a list of usernames found in the comment section of each submission. </li>
+    <li> Usernames with multiple comments were included only once, and deleted usernames were excluded.</li>
+    <li> From the list of unique usernames for all Reddit submissions, the frequency of each username presents in all submissions were calculated. </li>
+    <li> Using matplotlib, a histogram was plotted to represent the frequency of usernames commenting in multiple Reddit submissions. </li>
+  
+    <h4>Sentiment Analysis</h4>
+  
+    <li> Performed sentiment analysis of all comments in each Reddit submission by using (Valence Aware Dictionary and sEntiment Reasoner) VADER. </li>
+  
+    <li> A list was created to store the positive, negative, neutral and compound sentiment score for all comments of the Reddit submission.</li>
+  
+    <li> Comments with a compound sentiment scores greater than or equal to 0.05 was considered as positive sentiments, and compound sentiment scores less than or equal to -0.05 was considered as negative sentiments. Neutral sentiment ranged a compound sentiment scores between -0.05 and 0.05.</li>
+  
+    <h4>Word Cloud</h4>
+  
+    <li> Lists of comments with negative and positive sentiment were created, selecting comments with compound sentiment scores less than -0.9 and greater than 0.9 for their respective lists. </li>
+  
+    <li> All comments from both negative sentiments and positive sentiments were normalized by removing special characters, numbers and stopwords using (Natural Language Toolkit) NLTK. </li>
+  
+    <li> The resulting positive sentiment list of words and negative sentiment list of words were used to create their respective word cloud, using WordCloud. </li>
+  
+    <h4>Sentiment score Boxplot of all Reddit Submission</h4>
+  
+    <li> The lists of compound sentiment scores of all Reddit submissions were organized in chronological order.</li>
+  
+    <li> Seaborn was used to create a graphical representation of the result of the sentiment analysis, in chronological order in the x-axis and the sentiment score in the y-axis.</li>
+  
+    <li> Stripplot was used to plot all compound sentiment scores of all comments in each Reddit submission.</li>
+  
+    <li> Boxplot was used to create a box plot of each Reddit submission.</li>
+  
+    <li>Pointplot was used to create a line graph of the mean sentiment for each Reddit submission. </li>
+  
+    <li> A trendline of all mean scores was included using a numpy polyfit and poly1d.</li>
+    </ul>
+    </p>
+  </details>
 
 
 - Topic model of comments (Lei)
@@ -142,7 +143,7 @@ We drew histogram of users commenting in multiple Reddit submissions.
 -	61 Reddit usernames were found in three Reddit submissions, following with 8 Reddit usernames in four Reddit submissions, and 4 Reddit usernames in five Reddit submissions. 
 -	 2 usernames commented in the six submissions, the maximum number of different Reddit submissions. 
 
-![histogram](images/data-exploration/Histogram.png)
+<img src="images/data-exploration/Histogram.png" alt="histogram" style="zoom:50%;" />
 
 **Sentiment Analysis**
 
@@ -152,53 +153,48 @@ We drew histogram of users commenting in multiple Reddit submissions.
 -	In the trendline t1=0.0762 and t73 = 0.0686 with a delta of -0.0076 from the first Reddit submission and the last Reddit submission. 
 -	Based on the data collected, it is inconclusive to determine if sentiment change for male contraception. 
 
-
-![histogram](images/data-exploration/negative_wordcloud.png)
-![histogram](images/data-exploration/positive_wordcloud.png)
-![histogram](images/data-exploration/Sentiment_scores.png)
+<img src="images/data-exploration/negative_wordcloud.png" alt="histogram" style="zoom:40%;" /> <img src="images/data-exploration/positive_wordcloud.png" alt="histogram" style="zoom:40%;" /> ![histogram](images/data-exploration/Sentiment_scores.png)
 
 ### Topic Model
 
 **Text Preprocessing**
 
-As part of preprocessing, we will:
+As part of preprocessing, we will the following natural language processing techniques:
 
-- Tokenize documents (split the documents into tokens) and remove noise. 
-- Lemmatize the tokens. `nltk.stem.wordnet.WordNetLemmatizer`
-- Compute bigrams. `gensim.models.Phrases`
-- Compute a bag-of-words representation of the data. `gensim.corpora.Dictionary`
-
+- Tokenize documents and remove noise. 
+- Lemmatize the tokens. 
+- Compute bigrams. 
+- Compute a bag-of-words representation of the data. 
 
 <details>
-  <summary>Click to expand for more details on text preprocessing</summary>
+  <summary><u style="color:blue">Click to expand for more details on text preprocessing</u></summary>
 
   <h4>Tokenize and Remove Noise</h4>
 
-  First, we tokenized the text using the tokenizer `gensim.utils.tokenize()` from `Gensim`. We removed the following tokens or comments as they don’t tend to be useful, and the comments contain a lot of them.
+  First, we tokenized the text (split the documents into tokens) using the tokenizer `gensim.utils.tokenize()` from Gensim. We removed the following tokens or comments as they don't tend to be useful, and the comments contain a lot of them.
 
-  - stopwords: `gensim.parsing.preprocessing.STOPWORDS`
+  - stopwords: gensim.parsing.preprocessing.STOPWORDS
   - single character tokens and numeric tokens 
-  - URLs: regular expression `r'http\S+'`
+  - URLs: regular expression, `r'http\S+'`
   - common and rare words: filter out words that occur less than 5 documents, or more than 30% of the documents.
   - [deleted] comments
 
   <h4>Lemmatize the Tokens</h4>
 
   <p>
-  We found some words with the same meaning could occur in one topic, especially gender words. For example, our topic model could generate a topic containing `female`, `women`, and `woman` at the same time. Gender words are important for our model because we are studying topics like birth control, but words with the same meaning could appear in a topic, which will harm the informativeness of our topic model.  
+  We found some words with the same meaning could occur in one topic, especially gender words. For example, our topic model could generate a topic containing "female", "women", and "woman" at the same time. Gender words are important for our model because we are studying topics like birth control, but words with the same meaning could appear in a topic, which will harm the informativeness of our topic model.  
 
-  We use the WordNet lemmatizer from `NLTK`. A lemmatizer could produce more readable words and help our topic model generate more informative topics. This is very desirable in topic modeling.
+  We use the WordNet lemmatizer from NLTK, "nltk.stem.wordnet.WordNetLemmatizer". A lemmatizer could produce more readable words and help our topic model generate more informative topics. This is very desirable in topic modeling.
   </p>
 
   <h4>Bigrams</h4>
   <p>
-  We find bigrams in the documents(comments). Bigrams are sets of two adjacent words. Using bigrams we can get phrases like "birth_control" in our output (spaces are replaced with underscores); without bigrams we would only get "birth" and "control".
-  
+  We find bigrams in the documents(comments) with `gensim.models.Phrases`. Bigrams are sets of two adjacent words. Using bigrams we can get phrases like "birth_control" in our output (spaces are replaced with underscores); without bigrams we would only get "birth" and "control".
 
   Then, add bigrams into our corpus, because we would like to keep the words "birth" and "control" as well as the bigram "birth_control". The following block shows part of phrases found by the bigram model</p>
 
   <p>
-  > ['fda_approval', 'lasts_years', 'test_subjects', 'sperm_count', 'birth_control', 'family_planning', 'tl_dr', 'reproductive_organs', 'shoot_blanks', 'bullet_proof', 'proof_vest', 'sex_drive', 'paying_child', 'child_support', 'hell_yes', 'female_birth', 'protect_stds', 'male_birth', 'proven_safe', 'birth_controls', 'shooting_blanks', 'approved_fda', 'want_kids', 'hormonal_birth', 'use_condoms', 'shoot_bulletproof', ...]
+  ['fda_approval', 'lasts_years', 'test_subjects', 'sperm_count', 'birth_control', 'family_planning', 'tl_dr', 'reproductive_organs', 'shoot_blanks', 'bullet_proof', 'proof_vest', 'sex_drive', 'paying_child', 'child_support', 'hell_yes', 'female_birth', 'protect_stds', 'male_birth', 'proven_safe', 'birth_controls', 'shooting_blanks', 'approved_fda', 'want_kids', 'hormonal_birth', 'use_condoms', 'shoot_bulletproof', ...]
   </p>
 
   <p>
@@ -227,7 +223,7 @@ Our topic model is based on Latent Dirichlet allocation (LDA). LDA is a generati
 Hyperparameter tuning shows the LDA model with 8 topics perform best. Hence, we used `gensim.models.Lda` to train a LDA model with 8 topics where each topic is a combination of keywords, and each keyword contributes a certain weightage to the topic. 
 
 <details>
-  <summary>Click to see the details on hyperparameter tuning</summary>
+  <summary><u style="color:blue">Click to see the details on hyperparameter tuning</u></summary>
   <p>
   We are ready to train the LDA model. We will first discuss how to set some of the training parameters.
   </p>
@@ -276,7 +272,7 @@ The above results are hard to read, so we created interactive visualization with
 - a right panel containing a bar chart – the bars represent the terms that are most useful in interpreting the topic currently selected (what the meaning of each topic is).
 
 <details>
-  <summary>Click to expand for more details on topics' visualization</summary>
+  <summary><u style="color:blue">Click to expand for more details on topics' visualization</u></summary>
   <p>
   On the left, the topics are plotted as circles, whose centers are defined by the computed distance between topics (projected into 2 dimensions). The prevalence of each topic is indicated by the circle’s area. On the right, two juxtaposed bars showing the topic-specific frequency of each term (in red) and the corpus-wide frequency (in blueish gray). When no topic is selected, the right panel displays the top 30 most salient terms for the dataset.
   </p>
@@ -311,17 +307,11 @@ For instance, if we choose topic 1 on the left panel, we can see the top most re
 
 **Top word used in the most-mentioned US states**
 
-Texas <br>
-![Number of posts by subreddits](images/data-exploration/texas_top_words.png)
+The following pictures are showing the top words used in Texas, California, New York and Florida.
 
-California <br>
-![Number of posts by year](images/data-exploration/california_top_words.png)
+<img src="images/data-exploration/texas_top_words.png" alt="Number of posts by subreddits" style="zoom: 40%;" /> <img src="images/data-exploration/california_top_words.png" alt="Number of posts by year" style="zoom:40%;" />
 
-New York <br>
-![Number of comments by year](images/data-exploration/new_york_top_words.png)
-
-Florida <br>
-![Number of comments by year](images/data-exploration/florida_top_words.png)
+<img src="images/data-exploration/new_york_top_words.png" alt="Number of comments by year" style="zoom:35%;" /> <img src="images/data-exploration/florida_top_words.png" alt="Number of comments by year" style="zoom:35%;" />
 
 
 
