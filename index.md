@@ -173,7 +173,7 @@ Some notable words:
 -	In the trendline t1=0.0762 and t73 = 0.0686 with a delta of -0.0076 from the first Reddit submission and the last Reddit submission. 
 -	Based on the data collected, it is inconclusive to determine if sentiment change for male contraception. 
 
-<img src="images/data-exploration/negative_wordcloud.png" alt="histogram" width="350" /> <img src="images/data-exploration/positive_wordcloud.png" alt="histogram" width="350" /> 
+<img src="images/data-exploration/negative_wordcloud.png" alt="histogram" width="400" /> <img src="images/data-exploration/positive_wordcloud.png" alt="histogram" width="400" /> 
 ![histogram](images/data-exploration/Sentiment_scores.png)
 
 <details>
