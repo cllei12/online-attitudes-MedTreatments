@@ -52,9 +52,10 @@ We set out to answer the following questions:
 We attempted to answer these questions through the following methods:
 
 - Creating a histogram of users commenting on multiple posts (Jae)
+  
   -	Represent the frequency of usernames present in multiple Reddit submissions.
   
-  <details>
+    <details>
     <summary><u style="color:blue">Click to expand for more details on histogram</u></summary>
     <h4>Histogram of users commenting in multiple Reddit submissions.</h4>
     <p>
@@ -69,11 +70,12 @@ We attempted to answer these questions through the following methods:
   </details>
   
 - Sentiment analysis through the years (Jae)
+  
   -	Calculate the overall sentiment of each Reddit submission by analyzing all comments within the submission. 
   - Depict words most occur in each respective sentiment, negative and positive, using Word Cloud. 
   -	Visualize sentiment scores for all Reddit submissions to represent sentiment trend
-
-  <details>
+  
+    <details>
     <summary><u style="color:blue">Click to expand for more details on histogram and sentiment analysis</u></summary>
     <p>
     <h4>Sentiment Analysis</h4>
@@ -109,11 +111,10 @@ We attempted to answer these questions through the following methods:
     </p>
   </details>
 
-
 - Topic model of comments (Lei)
 
-    - Discover the abstract topics that frequently occur in Reddit comments.
-      
+  - Discover the abstract topics that frequently occur in Reddit comments.
+    
     <details>
       <summary>
       <u style="color:blue">Click to expand for more details on topic model</u>
@@ -198,7 +199,8 @@ We drew histogram of users commenting in multiple Reddit submissions.
 -	In the trendline t1=0.0762 and t73 = 0.0686 with a delta of -0.0076 from the first Reddit submission and the last Reddit submission. 
 -	Based on the data collected, it is inconclusive to determine if sentiment change for male contraception. 
 
-<img src="images/data-exploration/negative_wordcloud.png" alt="histogram" style="zoom:35%;" /> <img src="images/data-exploration/positive_wordcloud.png" alt="histogram" style="zoom:35%;" /> ![histogram](images/data-exploration/Sentiment_scores.png)
+<img src="images/data-exploration/negative_wordcloud.png" alt="histogram" style="zoom:33%;" /> <img src="images/data-exploration/positive_wordcloud.png" alt="histogram" style="zoom:33%;" /> 
+![histogram](images/data-exploration/Sentiment_scores.png)
 
 ### Topic Model
 
@@ -308,6 +310,13 @@ The above results are hard to read, so we created an interactive graph to interp
 - a left panel that depicts a global view of the model (how prevalent each topic is and how topics relate to each other);
 - a right panel containing a bar chart – the bars represent the terms that are most useful in interpreting the topic currently selected (what the meaning of each topic is).
 
+<iframe id="lda_vis" 
+	title="Topic Model Visualization" 
+	width="100%" height="700px" scrolling="yes" frameborder="0"
+	src="assets/html/lda_8.html">
+</iframe>
+For instance, if we choose topic 1 on the left panel, we can see the top most relevant terms for Topic 1 contains, female, pill, male, effect, birth_control, etc. And if we choose the term "pill", the right panel will show the conditional topic distribution given the term "pill". Obviously, "pill" is mentioned more in topic 1 than other topics.
+
 <details>
   <summary><u style="color:blue">Click to expand for more details on topics' visualization</u></summary>
   <p>We created this interactive graph with `pyLDAvis` package to interpret the topics.</p>
@@ -322,13 +331,6 @@ The above results are hard to read, so we created an interactive graph to interp
   </p>
 </details>
 
-
-<iframe id="lda_vis" 
-	title="Topic Model Visualization" 
-	width="100%" height="700px" scrolling="yes" frameborder="0"
-	src="assets/html/lda_8.html">
-</iframe>
-For instance, if we choose topic 1 on the left panel, we can see the top most relevant terms for Topic 1 contains, female, pill, male, effect, birth_control, etc. And if we choose the term "pill", the right panel will show the conditional topic distribution given the term "pill". Obviously, "pill" is mentioned more in topic 1 than other topics.
 
 **Topic Interpretation**
 
