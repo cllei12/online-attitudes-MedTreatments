@@ -1,4 +1,4 @@
-# [Website for Characterizing Online Attitudes](https://cllei12.github.io/)
+# [Website for Characterizing Online Attitudes](https://cllei12.github.io/online-attitudes-MedTreatments)
 
 Project website for Characterizing Online Attitudes, Expectations, and Concerns about Novel Medical Treatments
 
